@@ -47,7 +47,7 @@ var request = {
 var api = {
     update: function (data) {
         data.uid = data.uid || uuid;
-        request.get("http://localhost:5000/api/greeting/cmd?cmdstr=" + JSON.stringify(data));
+        request.get("http://192.168.1.101:8088/api/greeting/cmd?cmdstr=" + JSON.stringify(data));
     }
 };
 function s4() {

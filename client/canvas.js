@@ -1,5 +1,5 @@
 
-var renderer = new PIXI.CanvasRenderer(1280, 768, { backgroundColor: 0xf0f9bb, view: document.getElementById("panel") });
+var renderer = new PIXI.CanvasRenderer(1280, 2000, { backgroundColor: 0xf0f9bb, view: document.getElementById("panel") });
 
 // The renderer will create a canvas element for you that you can then insert into the DOM.
 //document.body.appendChild(renderer.view);
@@ -69,6 +69,22 @@ function onDragMove(event) {
     }
 }
 var editor = document.createElement("textarea");
+editor.addEventListener("blur", function (event) {
+    console.log("blur");
+    if (selected.text != editor.value) {
+        selected.text = editor.value;
+        _app.api.update({ data: selected.text, id: selected.id });
+        isUpdated = true;
+    }
+    editor.style.display = "none";
+}, true);
+
+editor.onkeypress = function (e) {
+    if (e.keyCode == 13 && !e.ctrlKey) {
+        editor.blur();
+    }
+}
+
 var selected = null;
 renderer.view.parentNode.appendChild(editor);
 function onClick(hit) {
@@ -88,13 +104,7 @@ function onClick(hit) {
         editor.style.width = hit.width * stage.scale.x;
         editor.style.zIndex = 1;
 
-        editor.addEventListener("blur", function (event) {
-            console.log("blur");
-            if (selected.text != editor.value) {
-                selected.text = editor.value;
-                _app.api.update({ data: selected.text, id: selected.id });
-            }
-        }, true);
+
 
         editor.style.display = "";
         editor.focus();
@@ -270,9 +280,15 @@ console.log(stage.scale);
 var count = 0;
 module.exports = function (app) {
     _app = app;
+    _app.createNew = function () {
+        createText({
+            data: "new text", x: 100 + renderer.view.parentNode.scrollLeft / 2
+            , y: 100 + renderer.view.parentNode.scrollTop / 2
+        });
+    }
     animate();
 
-    var evtSource = new EventSource("http://localhost:5000/api/greeting/test", {});
+    var evtSource = new EventSource("http://192.168.1.101:8088/api/greeting/test", {});
     evtSource.onmessage = function (e) {
         var data = JSON.parse(e.data);
         if (data.uid === app.uid) return;
@@ -287,13 +303,13 @@ module.exports = function (app) {
 };
 
 function updateText(data) {
-    var c = all.find(i => {
+    var c = all.filter(i => {
         return i.id === data.id;
     });
-    if (c) {
-        c.text = data.data
-        c.x = data.x || c.x;
-        c.y = data.y || c.y;
+    if (c.length) {
+        c[0].text = data.data
+        c[0].x = data.x || c[0].x;
+        c[0].y = data.y || c[0].y;
     } else (createText(data))
 }
 
@@ -323,4 +339,5 @@ function createText(data) {
 
     all.push(text);
     stage.addChild(text);
+    isUpdated = true;
 }
