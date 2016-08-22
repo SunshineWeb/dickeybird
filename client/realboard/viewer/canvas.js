@@ -13,6 +13,7 @@ export class Canvas {
     addDisplayObject(obj) {
         this.stage.addChild(obj);
         this.isNeedUpdate = true;
+        return obj;
     }
 
     removeDisplayObject(obj) {
@@ -37,46 +38,64 @@ export class Canvas {
         animate();
     }
 
+    _getPoint(eventData) {
+        var cur = eventData;
+        if (eventData.changedTouches) {
+            cur = eventData.changedTouches[0];
+        }
+
+        return { x: cur.pageX, y: cur.pageY };
+    }
+
     _onDragStart(params) {
+        params.stopPropagation();
         this.moved = false;
-        this.moving = true;
-        var cur = params.data.originalEvent.changedTouches[0];
-        this.lastPt = { x: cur.pageX, y: cur.pageY };
+        if (!params.data.originalEvent.touches || params.data.originalEvent.touches.length === 1) {
+            this.moving = true;
+        }
+        this.lastPt = this._getPoint(params.data.originalEvent);
+        return true
     }
 
     _onDragEnd(params) {
+         params.stopPropagation();
         if (this.moving) {
-            var cur = params.data.originalEvent.changedTouches[0];
-            var newPos = { x: cur.pageX, y: cur.pageY };
-            var delta = { x: newPos.x - this.lastPt.x, y: newPos.y - this.lastPt.y };
-            this.renderer.view.parentElement.parentElement.scrollTop -= delta.y;
-            this.renderer.view.parentElement.parentElement.scrollLeft -= delta.x;
+            var newPos = this._getPoint(params.data.originalEvent);
+            this._move(newPos, true);
             this.moving = false;
         }
-        
+
         if (!this.moved) {
             this.editor.hide();
         }
 
         this.moving = false;
+        return true
+    }
+
+    _move(newPos, force) {
+        var delta = { x: newPos.x - this.lastPt.x, y: newPos.y - this.lastPt.y };
+        var curEle = this.renderer.view.parentElement.parentElement;
+        delta.x = curEle.scrollLeft - delta.x > 0 ? delta.x : curEle.scrollLeft;
+        delta.y = curEle.scrollTop - delta.y > 0 ? delta.y : curEle.scrollTop;
+        if (force || Math.abs(delta.x) > 1) {
+            this.lastPt.x = newPos.x;
+            curEle.scrollLeft -= delta.x;
+        }
+        if (force || Math.abs(delta.y) > 1) {
+            this.lastPt.y = newPos.y;
+            curEle.scrollTop -= delta.y;
+        }
     }
 
     _onDragMove(params) {
+         params.stopPropagation();
         if (this.moving) {
-            var cur = params.data.originalEvent.changedTouches[0];
-            var newPos = { x: cur.pageX, y: cur.pageY };
-            var delta = { x: newPos.x - this.lastPt.x, y: newPos.y - this.lastPt.y };
-            if (Math.abs(delta.x) > 1) {
-                this.lastPt.x = newPos.x;
-                this.renderer.view.parentElement.parentElement.scrollLeft -= delta.x;
-            }
-            if (Math.abs(delta.y) > 1) {
-                this.lastPt.y = newPos.y;
-                this.renderer.view.parentElement.parentElement.scrollTop -= delta.y;
-            }
-
+            var newPos = this._getPoint(params.data.originalEvent);
+            this._move(newPos);
             this.moved = true;
         }
+        return true
     }
 
     bindEvent() {

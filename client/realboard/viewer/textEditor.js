@@ -5,6 +5,8 @@ head.innerText = "Editor";
 
 editor.appendChild(head);
 var input = document.createElement("textarea");
+var delta = {};
+var last = {};
 
 editor.appendChild(input);
 
@@ -14,11 +16,42 @@ input.onkeypress = function (e) {
     }
 }
 
+var movehandler;
+function drag_start(event) {
+    last = { x: event.screenX, y: event.screenY };
+    var style = window.getComputedStyle(event.target, null);
+    event.dataTransfer.setData("text/plain",
+        (parseInt(style.getPropertyValue("left"), 10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"), 10) - event.clientY));
+}
+function drag_over(event) {
+    var newlast = { x: event.screenX, y: event.screenY };
+    delta.dx = newlast.x - last.x;
+    delta.dy = newlast.y - last.y;
+    last = newlast;
+    if (delta.dx || delta.dy) {
+        if (movehandler) {
+            movehandler(delta);
+        }
+    }
+    event.preventDefault();
+    return false;
+}
+function drop(event) {
+    var offset = event.dataTransfer.getData("text/plain").split(',');
+    editor.style.left = (event.clientX + parseInt(offset[0], 10)) + 'px';
+    editor.style.top = (event.clientY + parseInt(offset[1], 10)) + 'px';
+    event.preventDefault();
+    return false;
+}
+editor.draggable = true;
 
 
 export class TextEditor {
     constructor(container) {
         container.appendChild(editor);
+        editor.addEventListener('dragstart', drag_start, false);
+        document.body.addEventListener('dragover', drag_over, false);
+        document.body.addEventListener('drop', drop, false);
     }
 
     show(pos, size, entity) {
@@ -43,6 +76,10 @@ export class TextEditor {
             this._resolve = resolve;
         });
 
+    }
+
+    move(handler) {
+        movehandler = handler;
     }
 
     hide() {

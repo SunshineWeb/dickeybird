@@ -4,7 +4,7 @@ module.exports = {
     entry: {
         main: ["./main.js"],
         mainwg: ["./main.1.js"],
-        realtimepanel: ["./node_modules/es-polyfill/dist/polyfill.min.js", "./realboard/main.js"]
+        realtimepanel: ["./node_modules/babel-es6-polyfill/browser-polyfill.min.js", "./realboard/main.js"]
 
     },
     output: {
@@ -34,6 +34,13 @@ module.exports = {
         root: path.resolve(__dirname, 'node_modules')
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({ minimize: true })
+        new webpack.optimize.UglifyJsPlugin({
+            minimize: true, mangle: {
+                props: {
+                    regex: /^_|_$/,
+                    ignore_quoted: true,
+                },
+            }
+        })
     ]
 };

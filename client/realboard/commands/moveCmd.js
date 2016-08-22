@@ -31,28 +31,32 @@ export class MoveCmd extends Cmd.Command {
     }
 
     _onDragStart(event) {
-        console.log("object");
-        this.app.viewer.isHandling = true;
-        event.stopPropagation();
-        this.data = event.data;
-        this._viewModel.alpha = 0.5;
-        this.dragging = true;
-        this._startPos = this.data.getLocalPosition(this._viewModel.parent);
-        this.app.viewer.isNeedUpdate = true;
-        this._viewModel.inMoving = false;
+        if (!event.data.originalEvent.touches || event.data.originalEvent.touches.length === 1) {
+            this.app.viewer.isHandling = true;
+            event.stopPropagation();
+            this.data = event.data;
+            this._viewModel.alpha = 0.5;
+            this.dragging = true;
+            this._startPos = this.data.getLocalPosition(this._viewModel.parent);
+            this.app.viewer.isNeedUpdate = true;
+            this._viewModel.inMoving = false;
+        }
         return true
     }
 
     _onDragEnd(event) {
-        this.app.viewer.isHandling = false;
-        event.stopPropagation();
-        this._viewModel.alpha = 1;
         if (this.dragging) {
-            this.move(this.data.getLocalPosition(this._viewModel.parent));
+            event.stopPropagation();
+            this._viewModel.alpha = 1;
+            if (this.dragging) {
+                this.move(this.data.getLocalPosition(this._viewModel.parent));
+            }
+            this.dragging = false;
+            this.data = null;
+            this.app.viewer.isNeedUpdate = true;
         }
-        this.dragging = false;
-        this.data = null;
-        this.app.viewer.isNeedUpdate = true;
+
+        this.app.viewer.isHandling = false;
         return true
     }
 

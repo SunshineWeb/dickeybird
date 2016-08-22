@@ -65,7 +65,7 @@ export class DrawCmd extends Cmd.Command {
         if (this.path.length) {
             this._viewModel.lineTo(newPosition.x, newPosition.y);
         } else {
-            this._viewModel.lineStyle(10, 0xffd900, 1);
+            this._viewModel.lineStyle(6, 0xffd900, 1);
             this._viewModel.moveTo(newPosition.x, newPosition.y);
         }
         this.path.push(newPosition);
@@ -73,11 +73,13 @@ export class DrawCmd extends Cmd.Command {
     }
 
     _onDragStart(event) {
+        event.stopPropagation();
         this.drawing = true;
         this.move(event.data.getLocalPosition(this._viewModel.parent));
     }
 
     _onDragEnd(event) {
+        event.stopPropagation();
         this.data = null;
         this.drawing = false;
         this.paths.push(this.path);
@@ -85,6 +87,7 @@ export class DrawCmd extends Cmd.Command {
     }
 
     _onDragMove(event) {
+        event.stopPropagation();
         if (this.drawing) {
             this.move(event.data.getLocalPosition(this._viewModel.parent));
         }

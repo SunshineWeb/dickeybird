@@ -16,7 +16,7 @@ window.onload = function () {
     var toolbar = new menus.MenuToolBar(document.getElementsByTagName("ul")[0]);
     toolbar.addMenuItem("Text", function () {
         var addNew = new commands.AddNew(window.app, { type: "text", text: "this is test2", pos: { x: 300, y: 100 } });
-        addNew.execute();
+        addNew.execute().editCmd.execute();
     });
 
     toolbar.addMenuItem("Rect", function () {

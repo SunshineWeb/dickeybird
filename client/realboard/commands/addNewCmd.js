@@ -11,8 +11,8 @@ export class AddNew extends Cmd.Command {
         this.entity = data;
     }
     execute() {
-        this._viewer.addDisplayObject(this._createNewObject());
         this.app.add(this.entity);
+        return this._viewer.addDisplayObject(this._createNewObject());
     }
     _createNewObject() {
         var newDisplay = null;
@@ -52,7 +52,7 @@ export class AddNew extends Cmd.Command {
                 break;
             case "path":
                 newDisplay = new PIXI.Graphics();//
-                newDisplay.lineStyle(10, 0xffd900, 1);
+                newDisplay.lineStyle(6, 0xffd900, 1);
                 var box = { x: 100000, y: 100000, x2: 0, y2: 0 };
                 this._data.paths.forEach(item => {
                     item.forEach((pt, index) => {
