@@ -6,6 +6,9 @@ export class App {
         this.commands = [];
     }
 
-    add() { }
+    add(entity) {
+        entity.id = entity.id || this.connector.util.guid();
+        this.entities.set(entity.id, entity);
+    }
 
 }

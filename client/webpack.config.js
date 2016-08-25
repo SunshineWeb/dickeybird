@@ -4,7 +4,7 @@ module.exports = {
     entry: {
         main: ["./main.js"],
         mainwg: ["./main.1.js"],
-        realtimepanel: ["./node_modules/babel-es6-polyfill/browser-polyfill.min.js", "./realboard/main.js"]
+        realtimepanel: ["./node_modules/babel-es6-polyfill/polyfill.js", "./lib/sse.js","./realboard/main.js"]
 
     },
     output: {

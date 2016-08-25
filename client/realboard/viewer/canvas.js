@@ -1,23 +1,34 @@
 export class Canvas {
-    constructor(viewElement) {
+    constructor(app, viewElement) {
+        this.app = app;
         this.isNeedUpdate = true;
         this.renderer = new PIXI.CanvasRenderer(1280, 2000, { backgroundColor: 0xf0f9bb, view: viewElement });
         this.stage = new PIXI.Container();
+        this.htmlContainer = document.getElementById("html-render");
         this.bg = new PIXI.Graphics();//
         this.bg.beginFill(0, 0);
         this.bg.lineStyle(0, 0xffd900, 1);
-        this.bg.drawRect(0, 0, 1280, 2000);
+        this.bg.drawRect(0, 0, 10000, 10000);
+        this.bg.position.x = -5000;
+        this.bg.position.y = -5000;
         this.stage.addChild(this.bg);
     }
 
     addDisplayObject(obj) {
-        this.stage.addChild(obj);
+        if (obj.entity && obj.entity.id) {
+            this.app.viewModels.set(obj.entity.id, obj);
+        }
+        this.stage.addChild(obj.node);
         this.isNeedUpdate = true;
         return obj;
     }
 
     removeDisplayObject(obj) {
-        this.stage.removeChild(obj);
+        if (obj.entity && obj.entity.id) {
+            this.app.viewModels.delete(obj.entity.id);
+        }
+        this.stage.removeChild(obj.node);
+        this.isNeedUpdate = true;
     }
 
     updateDisplayObject(obj) {
@@ -33,9 +44,26 @@ export class Canvas {
                 _this.renderer.render(_this.stage);
             }
         }
-
+        this.resize();
         this.bindEvent();
         animate();
+    }
+
+    resize() {
+        var panel = document.getElementById("svg-container");
+        console.log(panel.parentElement.clientHeight);
+        this.renderer.resize(panel.parentElement.clientWidth, panel.parentElement.clientHeight);
+        this.isNeedUpdate = true;
+    }
+
+    getVisiblePoint(x, y) {
+
+        return { x: Math.floor((x || 0) - this.stage.position.x), y: Math.floor((y || 0) - this.stage.position.y) }
+    }
+
+    getVisibleCenterPoint() {
+        var dx = this.renderer.width / this.stage.scale.x / 2, dy = this.renderer.height / this.stage.scale.y / 2;
+        return this.getVisiblePoint(dx, dy);
     }
 
     _getPoint(eventData) {
@@ -58,14 +86,13 @@ export class Canvas {
     }
 
     _onDragEnd(params) {
-         params.stopPropagation();
-        if (this.moving) {
+        params.stopPropagation();
+        if (this.moving && this.moved) {
             var newPos = this._getPoint(params.data.originalEvent);
             this._move(newPos, true);
-            this.moving = false;
         }
 
-        if (!this.moved) {
+        if (this.moving && !this.moved) {
             this.editor.hide();
         }
 
@@ -73,23 +100,39 @@ export class Canvas {
         return true
     }
 
+    zoomout() {
+        this.stage.scale.x = this.stage.scale.y = this.stage.scale.x + 0.1;
+        this.htmlContainer.style.transform = "scale(" + this.stage.scale.x + ")";
+        this.isNeedUpdate = true;
+    }
+
+    zoomin() {
+        this.stage.scale.x = this.stage.scale.y = this.stage.scale.x - 0.1;
+        this.htmlContainer.style.transform = "scale(" + this.stage.scale.x + ")";
+        this.isNeedUpdate = true;
+    }
+
     _move(newPos, force) {
         var delta = { x: newPos.x - this.lastPt.x, y: newPos.y - this.lastPt.y };
         var curEle = this.renderer.view.parentElement.parentElement;
-        delta.x = curEle.scrollLeft - delta.x > 0 ? delta.x : curEle.scrollLeft;
-        delta.y = curEle.scrollTop - delta.y > 0 ? delta.y : curEle.scrollTop;
+        //delta.x = curEle.scrollLeft - delta.x > 0 ? delta.x : curEle.scrollLeft;
+        //delta.y = curEle.scrollTop - delta.y > 0 ? delta.y : curEle.scrollTop;
+        var htmlContainer = document.getElementById("html-render");
         if (force || Math.abs(delta.x) > 1) {
             this.lastPt.x = newPos.x;
-            curEle.scrollLeft -= delta.x;
+            this.stage.position.x += delta.x;
+            htmlContainer.style.left = this.stage.position.x + "px";
         }
         if (force || Math.abs(delta.y) > 1) {
             this.lastPt.y = newPos.y;
-            curEle.scrollTop -= delta.y;
+            this.stage.position.y += delta.y;
+            htmlContainer.style.top = this.stage.position.y + "px";
         }
+        this.isNeedUpdate = true;
     }
 
     _onDragMove(params) {
-         params.stopPropagation();
+        params.stopPropagation();
         if (this.moving) {
             var newPos = this._getPoint(params.data.originalEvent);
             this._move(newPos);

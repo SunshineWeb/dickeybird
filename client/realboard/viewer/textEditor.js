@@ -19,9 +19,11 @@ input.onkeypress = function (e) {
 var movehandler;
 function drag_start(event) {
     last = { x: event.screenX, y: event.screenY };
-    var style = window.getComputedStyle(event.target, null);
+    console.log(event.target)
+    var style = window.getComputedStyle(editor, null);
     event.dataTransfer.setData("text/plain",
         (parseInt(style.getPropertyValue("left"), 10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"), 10) - event.clientY));
+
 }
 function drag_over(event) {
     var newlast = { x: event.screenX, y: event.screenY };
@@ -38,12 +40,19 @@ function drag_over(event) {
 }
 function drop(event) {
     var offset = event.dataTransfer.getData("text/plain").split(',');
+    console.log(offset)
     editor.style.left = (event.clientX + parseInt(offset[0], 10)) + 'px';
     editor.style.top = (event.clientY + parseInt(offset[1], 10)) + 'px';
     event.preventDefault();
     return false;
 }
 editor.draggable = true;
+editor.onmouseup = (e) => {
+    e.stopPropagation();
+}
+editor.onmousedown = (e) => {
+    e.stopPropagation();
+}
 
 
 export class TextEditor {
@@ -55,13 +64,13 @@ export class TextEditor {
     }
 
     show(pos, size, entity) {
-        editor.style.top = pos.y;
-        editor.style.left = pos.x;
+        editor.style.top = pos.y + "px";
+        editor.style.left = pos.x + "px";
 
         input.value = entity.text;
         editor.style.display = "block";
-        input.style.height = size.height;
-        input.style.width = size.width;
+        input.style.height = size.height + "px";
+        input.style.width = size.width + "px";
         input.focus();
         editor.onmousedown = function (event) {
             event.stopPropagation();

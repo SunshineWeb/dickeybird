@@ -8,6 +8,10 @@ export class MenuToolBar {
         var memuItem = document.createElement("li");
         memuItem.innerText = text;
         memuItem.onclick = handler;
+        memuItem.onmousedown = (e) => {
+            e.stopPropagation();
+            return false;
+        }
         this._root.appendChild(memuItem);
     }
     removeMenuItem() {
