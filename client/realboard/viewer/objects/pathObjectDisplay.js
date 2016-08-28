@@ -3,7 +3,7 @@ export class GraphicDisplay extends baseObjectDisplay {
     constructor(app, entity) {
         super(app, entity);
         this.node = new PIXI.Graphics();//
-        this.node.lineStyle(6, 0xffd900, 1);
+        this.node.lineStyle(entity.stroke || 6, entity.color || 0xffd900, 1);
         var box = { x: 100000, y: 100000, x2: 0, y2: 0 };
         entity.paths.forEach(item => {
             item.forEach((pt, index) => {
@@ -27,7 +27,8 @@ export class GraphicDisplay extends baseObjectDisplay {
                 }
             });
         });
-
+        this.node.position.x = entity.pos.x;
+        this.node.position.y = entity.pos.y;
     }
 
 }

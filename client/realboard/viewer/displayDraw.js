@@ -2,9 +2,12 @@ var baseDisplay = require("./display.js");
 export class displayDraw extends baseDisplay.Display {
     constructor(app) {
         super(app);
-        this.node = new PIXI.Graphics();
-        this.node.interactive = true;
-        this.node.on('mousedown', this._onDragStart, this)
+        this.node = new PIXI.Container();
+
+        this.bg = new PIXI.Graphics();
+        this.drawObject = new PIXI.Graphics();
+        this.bg.interactive = true;
+        this.bg.on('mousedown', this._onDragStart, this)
             .on('touchstart', this._onDragStart, this)
             // events for drag end
             .on('mouseup', this._onDragEnd, this)
@@ -14,13 +17,18 @@ export class displayDraw extends baseDisplay.Display {
             // events for drag move
             .on('mousemove', this._onDragMove, this)
             .on('touchmove', this._onDragMove, this);
-        this.node.beginFill(0, 0);
-        this.node.drawRect(0, 0, this.view.renderer.width, this.view.renderer.height);
-        this.node.endFill(0, 0);
-        this.node.position.x = 0;
-        this.node.position.y = 0;
+        this.bg.beginFill(0, 0);
+        this.bg.drawRect(-5000, -5000, 10000, 10000);
+        this.bg.endFill(0, 0);
+        this.bg.position.x = 0;
+        this.bg.position.y = 0;
         this.path = [];
         this.paths = [];
+
+        //this.drawObject.position.x = 0;
+        //this.drawObject.position.y = 0;
+        this.node.addChild(this.bg);
+        this.node.addChild(this.drawObject);
     }
 
     show() {
@@ -32,14 +40,16 @@ export class displayDraw extends baseDisplay.Display {
 
     hide() {
         this.view.removeDisplayObject(this);
+        this.node.destroy(true);
     }
 
     move(newPosition) {
         if (this.path.length) {
-            this.node.lineTo(newPosition.x - this.node.position.x, newPosition.y - this.node.position.y);
+            this.drawObject.lineStyle(2, 0xf1d900, 1);
+            this.drawObject.lineTo(newPosition.x - this.node.position.x, newPosition.y - this.node.position.y);
         } else {
-            this.node.lineStyle(6, 0xffd900, 1);
-            this.node.moveTo(newPosition.x - this.node.position.x, newPosition.y - this.node.position.y);
+            this.drawObject.lineStyle(2, 0xf1d900, 1);
+            this.drawObject.moveTo(newPosition.x - this.node.position.x, newPosition.y - this.node.position.y);
         }
         this.path.push(newPosition);
         this.view.isNeedUpdate = true;
@@ -48,6 +58,7 @@ export class displayDraw extends baseDisplay.Display {
     _onDragStart(event) {
         event.stopPropagation();
         this.drawing = true;
+
         this.move(event.data.getLocalPosition(this.node.parent));
     }
 
@@ -56,7 +67,11 @@ export class displayDraw extends baseDisplay.Display {
         this.data = null;
         this.drawing = false;
         this.paths.push(this.path);
+        if (this.addNew) {
+            this.addNew(this.path);
+        }
         this.path = [];
+        this.drawObject.clear();
     }
 
     _onDragMove(event) {
@@ -67,28 +82,7 @@ export class displayDraw extends baseDisplay.Display {
     }
 
     getData() {
-        var box = { x: 0, y: 0, x2: 0, y2: 0 };
-        this.paths = this.paths.filter(path => path.length > 1).map(path => {
-            return simplify(path, 0.25, false);
-        });
 
-        this.paths.forEach(item => {
-            item.forEach(subitem => {
-                if (subitem.x > box.x2) {
-                    box.x2 = subitem.x;
-                }
-                if (subitem.x < box.x) {
-                    box.x = subitem.x;
-                }
-                if (subitem.y > box.y2) {
-                    box.y2 = subitem.y;
-                }
-                if (subitem.y < box.y) {
-                    box.y = subitem.y;
-                }
-            });
-        });
-
-        return this.paths;
+        return this.paths.filter(i => i.length > 1);
     }
 }

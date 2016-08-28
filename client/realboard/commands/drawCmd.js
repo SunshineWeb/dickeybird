@@ -11,13 +11,19 @@ export class DrawCmd extends Cmd.Command {
 
     execute() {
         this._viewModel.show();
+        this._viewModel.addNew = (a) => {
+            this.addNew(a);
+        }
+    }
+
+    addNew(path) {
+        var data = { paths: [path], type: "path", pos: { x: 0, y: 0 }, stroke: 3, color: 0xf1d900 };
+        var addNew = new commands.AddNew(this.app, data);
+        addNew.execute();
+        addNew.complete();
     }
 
     complete() {
         this._viewModel.hide();
-        var data = { paths: this._viewModel.getData(), type: "path", pos: { x: 0, y: 0 } };
-        var addNew = new commands.AddNew(this.app, data);
-        addNew.execute();
-        addNew.complete();
     }
 }

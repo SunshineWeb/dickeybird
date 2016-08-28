@@ -1,0 +1,15 @@
+CACHE MANIFEST
+# v12 2011-08-15      
+# This is another comment 
+index.html
+output/realtimepanel.js
+lib/pixi.min.js
+res/image/noimage.png
+
+# Use from network if available
+NETWORK:
+api/*
+*
+
+# Fallback content
+FALLBACK:

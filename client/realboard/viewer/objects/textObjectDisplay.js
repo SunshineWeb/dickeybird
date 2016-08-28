@@ -6,6 +6,18 @@ export class TextDisplay extends baseObjectDisplay {
         this.node.position.x = entity.pos.x;
         this.node.position.y = entity.pos.y;
     }
+
+    update(data) {
+        if (data.text) {
+            this.entity.text = data.text;
+            this.node.text = this.entity.text;
+        }
+        super.update(data);
+    }
+
+    get editor() {
+        return this.view.editor;
+    }
 }
 
 baseObjectDisplay.register("text", TextDisplay);

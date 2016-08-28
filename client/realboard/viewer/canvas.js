@@ -2,16 +2,27 @@ export class Canvas {
     constructor(app, viewElement) {
         this.app = app;
         this.isNeedUpdate = true;
-        this.renderer = new PIXI.CanvasRenderer(1280, 2000, { backgroundColor: 0xf0f9bb, view: viewElement });
+        this.renderer = new PIXI.autoDetectRenderer(1280, 2000, { backgroundColor: 0xf0f9bb, view: viewElement });
         this.stage = new PIXI.Container();
         this.htmlContainer = document.getElementById("html-render");
         this.bg = new PIXI.Graphics();//
         this.bg.beginFill(0, 0);
-        this.bg.lineStyle(0, 0xffd900, 1);
         this.bg.drawRect(0, 0, 10000, 10000);
+        this.bg.endFill();
+        this._drawBg();
         this.bg.position.x = -5000;
         this.bg.position.y = -5000;
         this.stage.addChild(this.bg);
+    }
+
+    _drawBg() {
+        this.bg.lineStyle(1, 0xd9e9a9, 0.5);
+        for (var i = 0; i < 100; i++) {
+            this.bg.moveTo(0, i * 100);
+            this.bg.lineTo(10000, i * 100);
+            this.bg.moveTo(i * 100, 0);
+            this.bg.lineTo(i * 100, 10000);
+        }
     }
 
     addDisplayObject(obj) {
@@ -38,11 +49,14 @@ export class Canvas {
     show() {
         var _this = this;
         function animate() {
-            requestAnimationFrame(animate);
+
             if (_this.isNeedUpdate) {
                 _this.isNeedUpdate = false;
                 _this.renderer.render(_this.stage);
             }
+
+            _this.stats && _this.stats.update();
+            requestAnimationFrame(animate);
         }
         this.resize();
         this.bindEvent();
@@ -50,9 +64,8 @@ export class Canvas {
     }
 
     resize() {
-        var panel = document.getElementById("svg-container");
-        console.log(panel.parentElement.clientHeight);
-        this.renderer.resize(panel.parentElement.clientWidth, panel.parentElement.clientHeight);
+        var panel = this.renderer.view.parentElement.parentElement;
+        this.renderer.resize(panel.clientWidth, panel.clientHeight);
         this.isNeedUpdate = true;
     }
 
@@ -66,7 +79,7 @@ export class Canvas {
         return this.getVisiblePoint(dx, dy);
     }
 
-    _getPoint(eventData) {
+    getPagePoint(eventData) {
         var cur = eventData;
         if (eventData.changedTouches) {
             cur = eventData.changedTouches[0];
@@ -81,19 +94,20 @@ export class Canvas {
         if (!params.data.originalEvent.touches || params.data.originalEvent.touches.length === 1) {
             this.moving = true;
         }
-        this.lastPt = this._getPoint(params.data.originalEvent);
+        this.lastPt = this.getPagePoint(params.data.originalEvent);
         return true
     }
 
     _onDragEnd(params) {
         params.stopPropagation();
         if (this.moving && this.moved) {
-            var newPos = this._getPoint(params.data.originalEvent);
+            var newPos = this.getPagePoint(params.data.originalEvent);
             this._move(newPos, true);
         }
 
         if (this.moving && !this.moved) {
             this.editor.hide();
+            this.imageEditor.hide();
         }
 
         this.moving = false;
@@ -101,40 +115,38 @@ export class Canvas {
     }
 
     zoomout() {
-        this.stage.scale.x = this.stage.scale.y = this.stage.scale.x + 0.1;
+        this.zoom(0.1);
+    }
+
+    zoomin() {
+        this.zoom(-0.1);
+    }
+
+    zoom(delta) {
+        var newScale = this.stage.scale.x + delta;
+        this.stage.scale.x = this.stage.scale.y = (newScale < 0.1 ? 0.1 : newScale);
         this.htmlContainer.style.transform = "scale(" + this.stage.scale.x + ")";
         this.isNeedUpdate = true;
     }
 
-    zoomin() {
-        this.stage.scale.x = this.stage.scale.y = this.stage.scale.x - 0.1;
-        this.htmlContainer.style.transform = "scale(" + this.stage.scale.x + ")";
+    pan(dx, dy) {
+        this.stage.position.x += (dx || 0);
+        this.stage.position.y += (dy || 0);
+        this.htmlContainer.style.left = this.stage.position.x + "px";
+        this.htmlContainer.style.top = this.stage.position.y + "px";
         this.isNeedUpdate = true;
     }
 
     _move(newPos, force) {
         var delta = { x: newPos.x - this.lastPt.x, y: newPos.y - this.lastPt.y };
-        var curEle = this.renderer.view.parentElement.parentElement;
-        //delta.x = curEle.scrollLeft - delta.x > 0 ? delta.x : curEle.scrollLeft;
-        //delta.y = curEle.scrollTop - delta.y > 0 ? delta.y : curEle.scrollTop;
-        var htmlContainer = document.getElementById("html-render");
-        if (force || Math.abs(delta.x) > 1) {
-            this.lastPt.x = newPos.x;
-            this.stage.position.x += delta.x;
-            htmlContainer.style.left = this.stage.position.x + "px";
-        }
-        if (force || Math.abs(delta.y) > 1) {
-            this.lastPt.y = newPos.y;
-            this.stage.position.y += delta.y;
-            htmlContainer.style.top = this.stage.position.y + "px";
-        }
-        this.isNeedUpdate = true;
+        this.lastPt = newPos;
+        this.pan(delta.x, delta.y);
     }
 
     _onDragMove(params) {
         params.stopPropagation();
         if (this.moving) {
-            var newPos = this._getPoint(params.data.originalEvent);
+            var newPos = this.getPagePoint(params.data.originalEvent);
             this._move(newPos);
             this.moved = true;
         }
@@ -148,6 +160,8 @@ export class Canvas {
             .on("mouseup", this._onDragEnd, this)
             .on("touchend", this._onDragEnd, this)
             .on("mousemove", this._onDragMove, this)
-            .on("touchmove", this._onDragMove, this);
+            .on("touchmove", this._onDragMove, this)
+            .on('mouseupoutside', this._onDragEnd, this)
+            .on('touchendoutside', this._onDragEnd, this);
     }
 }

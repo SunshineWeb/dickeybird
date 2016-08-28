@@ -2,7 +2,7 @@
     "name": "website",
     "scripts": {
         "start": "http-server -p 8888 -c-1 ./",
-        "compile": "webpack --watch",
+        "compile": "webpack --watch --debug",
         "debug": "npm install & npm run compile & npm run start"
     },
     "dependencies": {

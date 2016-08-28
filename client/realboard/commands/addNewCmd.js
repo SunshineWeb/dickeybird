@@ -17,12 +17,15 @@ export class AddNew extends Cmd.Command {
         centerPt.y -= 40;
         this.entity.pos = this.entity.pos || centerPt;
         this.app.add(this.entity);
-        var _display = new view.displayObject(this.app, this.entity);
+        var _display = view.displayObject.create(this.app, this.entity);
         _display.show();
 
         _display.moveCmd = new commandMove.MoveCmd(this.app, _display);
-        if (this._data.type == "text")
-            _display.editCmd = new commandEdit.EditCmd(this.app, _display);
-        return _display;
+        _display.editCmd = new commandEdit.EditCmd(this.app, _display);
+
+        this.complete();
+    }
+    complete() {
+        this.app.connector.api.update(this.entity);
     }
 }

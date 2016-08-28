@@ -6,8 +6,9 @@ export class UpdateCmd extends Cmd.Command {
     }
 
     execute(data) {
-        var vm = this.app.viewModels.get(data.id);
-        vm.update(data);
+        this._viewModel = this.app.viewModels.get(data.id);
+        this._viewModel.update(data);
+        this.complete();
     }
 
     commit() {
@@ -15,6 +16,6 @@ export class UpdateCmd extends Cmd.Command {
     }
 
     complete() {
-        this.app.viewer.editor.hide();
+       
     }
 }

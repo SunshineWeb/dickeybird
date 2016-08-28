@@ -2,7 +2,7 @@ var request = {
     get: function (url, options) {
         return this._ajax(url, "GET");
     },
-    post: function (url, data, options) { 
+    post: function (url, data, options) {
         return this._ajax(url, "POST", data);
     },
     put: function (url, data, options) { },
@@ -11,7 +11,7 @@ var request = {
     _ajax: function (url, method, data) {
         var http = this._getHTTPObject();
         http.open(method, url, true);
-        if(method==="POST")
+        if (method === "POST")
             http.setRequestHeader("Content-type", "application/json");
         var promise = new Promise(function (resolve, reject) {
             http.onreadystatechange = function () {//Call a function when the state changes.
@@ -51,7 +51,17 @@ var request = {
 var api = {
     update: function (data) {
         data.uid = uuid;
-        request.post("/api/data/2", JSON.stringify(data));
+        //request.post("/api/data/2?uid=" + uuid, JSON.stringify(data));
+
+        var list = [];
+
+        window.app.entities.forEach(i => {
+            list.push(i);
+        })
+
+        console.log(list);
+
+        localStorage.setItem("design", JSON.stringify(list));
     }
 };
 function s4() {
