@@ -37,15 +37,15 @@ export default class extends Moveable {
             var url = input.value;
             var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
             if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
-                //var reader = new FileReader();
+                var reader = new FileReader();
 
-                //reader.onload = function (e) {
-                //    _this._resolve && _this._resolve(e.target.result);
-                //}
+                reader.onload = function (e) {
+                    _this._resolve && _this._resolve(e.target.result);
+                }
 
-                _this._resolve && _this._resolve(URL.createObjectURL(input.files[0]));
+                //_this._resolve && _this._resolve(URL.createObjectURL(input.files[0]));
 
-                //reader.readAsDataURL(input.files[0]);
+                reader.readAsDataURL(input.files[0]);
             } else {
 
             }

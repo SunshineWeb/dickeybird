@@ -54,7 +54,7 @@ function exitFullScreen() {
     }
 }
 
-window.onload = function () {
+var onload = function () {
 
     //stats.dom.style.right = "0px";
     //stats.dom.style.left = "";
@@ -126,7 +126,6 @@ window.onload = function () {
             } else
                 new commands.AddNew(window.app, json.d).execute();
         }
-        console.log(json.d);
     }, false);
     source.addEventListener('open', function (e) {
         console.log("open!");
@@ -136,15 +135,13 @@ window.onload = function () {
             console.log("error!");
         }
     }, false);
-
-    source.close();
-    setTimeout(scrollTo, 0, 0, 0);
+    //setTimeout(scrollTo, 0, 0, 10);
 
     var design = localStorage.getItem("design");
     if (design) {
         var entities = JSON.parse(design);
         entities.forEach((i) => {
-            new commands.AddNew(window.app, i).execute();
+            new commands.AddNew(window.app, i).execute(true);
         });
     }
 
@@ -152,4 +149,17 @@ window.onload = function () {
 
 window.onresize = function () {
     window.app.viewer.resize();
+}
+
+if (window.applicationCache) {
+    var cache = window.applicationCache;
+    cache.addEventListener("updateready", () => {
+        if(cache.status == cache.UPDATEREADY){
+            cache.swapCache();
+        }
+    }, false);
+}
+
+window.onload = function () {
+    onload();
 }

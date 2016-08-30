@@ -11,7 +11,7 @@ export class AddNew extends Cmd.Command {
         this._data = data;
         this.entity = data;
     }
-    execute() {
+    execute(local) {
         var centerPt = this._viewer.getVisibleCenterPoint();
         centerPt.x -= 50;
         centerPt.y -= 40;
@@ -23,9 +23,10 @@ export class AddNew extends Cmd.Command {
         _display.moveCmd = new commandMove.MoveCmd(this.app, _display);
         _display.editCmd = new commandEdit.EditCmd(this.app, _display);
 
-        this.complete();
+        this.complete(local);
     }
-    complete() {
-        this.app.connector.api.update(this.entity);
+    complete(local) {
+        if (!local)
+            this.app.connector.api.update(this.entity);
     }
 }

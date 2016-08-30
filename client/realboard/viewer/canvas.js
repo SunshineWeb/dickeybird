@@ -2,7 +2,7 @@ export class Canvas {
     constructor(app, viewElement) {
         this.app = app;
         this.isNeedUpdate = true;
-        this.renderer = new PIXI.autoDetectRenderer(1280, 2000, { backgroundColor: 0xf0f9bb, view: viewElement });
+        this.renderer = new PIXI.autoDetectRenderer(1280, 2000, { backgroundColor: 0x7ac9bb, view: viewElement });
         this.stage = new PIXI.Container();
         this.htmlContainer = document.getElementById("html-render");
         this.bg = new PIXI.Graphics();//
@@ -132,8 +132,12 @@ export class Canvas {
     pan(dx, dy) {
         this.stage.position.x += (dx || 0);
         this.stage.position.y += (dy || 0);
+        this.stage.position.x = this.stage.position.x > 5000 ? 5000 : this.stage.position.x < -5000 ? -5000 : this.stage.position.x;
+        this.stage.position.y = this.stage.position.y > 5000 ? 5000 : this.stage.position.y < -5000 ? -5000 : this.stage.position.y;
+
         this.htmlContainer.style.left = this.stage.position.x + "px";
         this.htmlContainer.style.top = this.stage.position.y + "px";
+        this.renderer.view.parentElement.dataset.pos = "(" + this.stage.position.x + ", " + this.stage.position.y + ")";
         this.isNeedUpdate = true;
     }
 

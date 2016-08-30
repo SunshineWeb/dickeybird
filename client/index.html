@@ -2,22 +2,28 @@
 <html manifest="mind.appcache">
 
 <head>
+    <title>study</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-    <meta name="apple-touch-fullscreen" content="yes"> 
+    <meta name="apple-touch-fullscreen" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="study">
+
+    <meta content=”telephone=no,email=no” name=”format-detection” />
     <link rel="apple-touch-icon" href="res/image/icon.jpg" />
+
+    <meta name="fullscreen" content="yes">
     <script src="lib/pixi.min.js"></script>
     <script src="output/realtimepanel.js"></script>
 
 </head>
 
 <body>
-    <div style="position: absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;border:1px solid transparent">
+    <div style="position: absolute;left:0;top:0;right:0;bottom:0px;overflow:hidden;border:0">
         <div id="svg-container">
             <canvas id="panel"></canvas>
-            <div id="html-render" style="position: absolute;left:0;top:0;"></div>
+            <div id="html-render" style="left:0;top:0;"></div>
         </div>
     </div>
 

@@ -51,15 +51,13 @@ var request = {
 var api = {
     update: function (data) {
         data.uid = uuid;
-        //request.post("/api/data/2?uid=" + uuid, JSON.stringify(data));
+        request.post("/api/data/2?uid=" + uuid, JSON.stringify(data));
 
         var list = [];
 
         window.app.entities.forEach(i => {
             list.push(i);
         })
-
-        console.log(list);
 
         localStorage.setItem("design", JSON.stringify(list));
     }

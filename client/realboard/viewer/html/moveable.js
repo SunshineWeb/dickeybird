@@ -66,7 +66,6 @@ export class Moveable {
     _drop(event) {
         if (this._last) {
             var offset = event.dataTransfer.getData("text/plain").split(',');
-            console.log(offset)
             this._element.style.left = (event.clientX + parseInt(offset[0], 10)) + 'px';
             this._element.style.top = (event.clientY + parseInt(offset[1], 10)) + 'px';
             event.preventDefault();

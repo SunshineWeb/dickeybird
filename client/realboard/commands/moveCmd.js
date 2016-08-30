@@ -14,7 +14,7 @@ export class MoveCmd extends Cmd.Command {
     complete() {
         var pos = this._viewModel.entity.pos;
         this._viewModel.update({ pos: { x: pos.x + this._changed.x, y: pos.y + this._changed.y } });
-        this.app.connector.api.update(this._viewModel.entity);
+        this.app.connector.api.update({ id: this._viewModel.entity.id, pos: this._viewModel.entity.pos });
         return this;
     }
 

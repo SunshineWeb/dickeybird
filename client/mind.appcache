@@ -1,13 +1,13 @@
 CACHE MANIFEST
-# v12 2011-08-15      
+# v1.1 2016-08-28  101246
 # This is another comment 
 index.html
-output/realtimepanel.js
 lib/pixi.min.js
 res/image/noimage.png
 
 # Use from network if available
 NETWORK:
+output/realtimepanel.js
 api/*
 *
 
