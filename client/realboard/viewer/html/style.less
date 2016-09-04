@@ -92,10 +92,15 @@ ul li.down {
     &:before{
         content:  attr(data-pos);
         position: fixed;
-        left:1em;
-        top:1em;
+        left:0;
+        top:0;
+        right: 0;
+        height: 1.2em;
+        padding-left: 20%;
         transform: none;
         z-index: 3;
+        color: white;
+        background-color: #3085c4;
     }
     #html-render {
         position: absolute;
@@ -132,6 +137,7 @@ ul li.down {
                 user-select: none;
                 -moz-user-select: none;
                 -webkit-user-select: none;
+                cursor: move;
             }
             textarea, input
             {
@@ -141,6 +147,8 @@ ul li.down {
                 border: 0;
                 min-width: 12em;
                 max-height: 20em;
+                min-height: 4em;
+                max-width: 20em;
             }
             >span {
                 padding: 0;

@@ -1,0 +1,12 @@
+<svg style="z-index:-1;position:absolute" height="1250" version="1.1" width="1250" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g stroke-width="1" >
+                    <g>
+                        <path fill="none" stroke="#000000" d="M0,50L1250,50M50,0L50,1250M0,100L1250,100M100,0L100,1250M0,150L1250,150M150,0L150,1250M0,200L1250,200M200,0L200,1250M0,300L1250,300M300,0L300,1250M0,350L1250,350M350,0L350,1250M0,400L1250,400M400,0L400,1250M0,450L1250,450M450,0L450,1250M0,550L1250,550M550,0L550,1250M0,600L1250,600M600,0L600,1250M0,650L1250,650M650,0L650,1250M0,700L1250,700M700,0L700,1250M0,800L1250,800M800,0L800,1250M0,850L1250,850M850,0L850,1250M0,900L1250,900M900,0L900,1250M0,950L1250,950M950,0L950,1250M0,1050L1250,1050M1050,0L1050,1250M0,1100L1250,1100M1100,0L1100,1250M0,1150L1250,1150M1150,0L1150,1250M0,1200L1250,1200M1200,0L1200,1250Z"
+                            stroke-width="1" opacity="0.1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0.1;"></path>
+                        <path fill="none" stroke="#000000" d="M0,250L1250,250M250,0L250,1250M0,500L1250,500M500,0L500,1250M0,750L1250,750M750,0L750,1250M0,1000L1250,1000M1000,0L1000,1250Z"
+                            stroke-width="2" opacity="0.1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0.1;"></path>
+                        <path fill="none" stroke="#000000" d="M0,0L1250,0M0,0L0,1250M0,1250L1250,1250M1250,0L1250,1250Z"
+                            stroke-width="4" opacity="0.1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0.1;"></path>
+                    </g>
+                </g>
+            </svg>

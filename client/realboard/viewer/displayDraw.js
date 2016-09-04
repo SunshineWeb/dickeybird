@@ -36,11 +36,15 @@ export class displayDraw extends baseDisplay.Display {
         this.node.position.x = pos.x;
         this.node.position.y = pos.y;
         this.view.addDisplayObject(this);
+        //this.view.stage.addChild(this.node);
+        this.view.setCursor("pointer");
     }
 
     hide() {
         this.view.removeDisplayObject(this);
-        this.node.destroy(true);
+        this.view.resetCursor();
+        //this.view.stage.removeChild(this.node);
+        //this.node.destroy(true);
     }
 
     move(newPosition) {
@@ -58,7 +62,7 @@ export class displayDraw extends baseDisplay.Display {
     _onDragStart(event) {
         event.stopPropagation();
         this.drawing = true;
-
+        //this.view.setCursor("crosshair");
         this.move(event.data.getLocalPosition(this.node.parent));
     }
 
@@ -66,8 +70,9 @@ export class displayDraw extends baseDisplay.Display {
         event.stopPropagation();
         this.data = null;
         this.drawing = false;
-        this.paths.push(this.path);
-        if (this.addNew) {
+        this.view.setCursor("pointer");
+        if (this.addNew && this.path && this.path.length > 1) {
+            this.paths.push(this.path);
             this.addNew(this.path);
         }
         this.path = [];

@@ -62,8 +62,8 @@ var onload = function () {
     window.app = new App.App();
     window.app.viewer = new viewer.Canvas(window.app, panel);
     window.app.viewer.show();
-    window.app.viewer.editor = new editors.TextEditor(document.getElementById("html-render"));
-    window.app.viewer.imageEditor = new imageEditor(document.getElementById("html-render"));
+    window.app.viewer.editor = new editors.TextEditor(document.getElementById("html-render"), app.viewer);
+    window.app.viewer.imageEditor = new imageEditor(document.getElementById("html-render"), app.viewer);
     window.app.connector = editor;
     window.app.viewer.loadingStatus = loadingStatus;
     window.app.viewer.stats = new Stats();
@@ -90,6 +90,7 @@ var onload = function () {
     var currentCmd;
 
     toolbar.addMenuItem("Draw", function (current) {
+        event.stopPropagation();
         if (this.className != "down") {
             this.className = "down";
             currentCmd = new commandDraw.DrawCmd(window.app);
@@ -138,12 +139,37 @@ var onload = function () {
     //setTimeout(scrollTo, 0, 0, 10);
 
     var design = localStorage.getItem("design");
-    if (design) {
+    if (design && false) {
         var entities = JSON.parse(design);
         entities.forEach((i) => {
             new commands.AddNew(window.app, i).execute(true);
         });
     }
+    //app.viewer.pan(5000, 5000);
+    /*for (var i = 0; i < 2000; i++) {
+        if ((i % 100) == 0) app.viewer.pan(5000, -50);
+        app.viewer.pan(-50, 0);
+        new commands.AddNew(window.app, { type: "image", width: 50, height: 50, src: "res/image/daisy.png" }).execute(true);
+    }*/
+
+    var i = 1;
+    var s = 1;
+    function drawOne() {
+        if (i < 400) {
+            setTimeout(drawOne, 0);
+            if ((i % 200) == 0) { app.viewer.pan(0, -50); s = -s; }
+
+            new commands.AddNew(window.app, { type: "image", width: 50, height: 50, src: "res/image/daisy.png" }).execute(true);
+            app.viewer.pan(-50 * s, 0);
+            i++;
+            //app.viewer.renderer.render(app.viewer.stage);
+            app.viewer.stats && app.viewer.stats.update();
+
+        }
+    }
+
+    app.viewer.pan(5000, 5000);
+    drawOne();
 
 }
 
@@ -154,7 +180,7 @@ window.onresize = function () {
 if (window.applicationCache) {
     var cache = window.applicationCache;
     cache.addEventListener("updateready", () => {
-        if(cache.status == cache.UPDATEREADY){
+        if (cache.status == cache.UPDATEREADY) {
             cache.swapCache();
         }
     }, false);
@@ -162,4 +188,8 @@ if (window.applicationCache) {
 
 window.onload = function () {
     onload();
+}
+
+window.onunload = function () {
+    app.viewer.destory();
 }

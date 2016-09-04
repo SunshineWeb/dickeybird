@@ -1,6 +1,6 @@
-var baseDisplay = require("./display.js");
-var registeredTypes = new Map();
-export class displayObject extends baseDisplay.Display {
+var baseDisplay = require("./display.js").Display;
+
+export class displayObject extends baseDisplay {
     constructor(app, entity) {
         super(app);
         this.entity = entity;
@@ -11,13 +11,25 @@ export class displayObject extends baseDisplay.Display {
         if (!this.isCreated) {
             this.isCreated = true;
             this.node.vm = this;
-
+            /*
             this.node.on('mousedown', this._onDragStart, this)
                 .on('touchstart', this._onDragStart, this)
                 .on("mouseup", this._onDragEnd, this)
                 .on("touchend", this._onDragEnd, this)
                 .on('mouseupoutside', this._onDragEnd, this)
-                .on('touchendoutside', this._onDragEnd, this);
+                .on('touchendoutside', this._onDragEnd, this)
+                .on("mouseover", this._onOver, this)
+                .on("mouseout", this._onLeave, this);
+                */
+
+                this.node.on('mousedown', this.view.mouseEvents.onDragStart, this.view.mouseEvents)
+                .on('touchstart', this.view.mouseEvents.onDragStart, this.view.mouseEvents)
+                .on("mouseup", this.view.mouseEvents.onDragEnd, this.view.mouseEvents)
+                .on("touchend", this.view.mouseEvents.onDragEnd, this.view.mouseEvents)
+                .on('mouseupoutside', this.view.mouseEvents.onDragEnd, this.view.mouseEvents)
+                .on('touchendoutside', this.view.mouseEvents.onDragEnd, this.view.mouseEvents)
+                .on("mouseover", this._onOver, this)
+                .on("mouseout", this._onLeave, this);
         }
         this.node.interactive = true;
         this.view.addDisplayObject(this);
@@ -28,15 +40,22 @@ export class displayObject extends baseDisplay.Display {
         this.view.removeDisplayObject(this);
     }
 
-    moveTo(newPosition) {
+    _moveTo(newPosition) {
         var delta = { dx: newPosition.x - this._startPos.x, dy: newPosition.y - this._startPos.y };
         this._startPos = newPosition;
         this.moveCmd.move(delta);
+        return;
+        /*if (this.draggingType == 2) {
+            this.moveCmd.move(delta);
+        }
+        else {
+            this.view.pan(delta.dx, delta.dy);
+        }*/
     }
 
     move(delta) {
-        this.node.position.x += delta.dx;
-        this.node.position.y += delta.dy;
+        this.node.position.x += (delta.dx / this.view.scale);
+        this.node.position.y += (delta.dy / this.view.scale);
         this.view.isNeedUpdate = true;
     }
 
@@ -49,10 +68,13 @@ export class displayObject extends baseDisplay.Display {
 
     showEditor() {
         if (this.editor) {
-            this.editor.show(this.node.position, this.node, this.entity).then((data) => {
-                this.editCmd.execute(data);
-                this.show();
-            });
+            this.editor
+                .hide()
+                .show(this.node.position, this.node, this.entity)
+                .then((data) => {
+                    this.editCmd.execute(data);
+                    this.show();
+                });
 
             this.editor
                 .start(() => this.moveCmd.execute())
@@ -63,73 +85,73 @@ export class displayObject extends baseDisplay.Display {
 
     _onDragStart(event) {
         if (!event.data.originalEvent.touches || event.data.originalEvent.touches.length <= 1) {
+            this.node.scale.x = this.node.scale.y = this.scale;
             this.node
                 .on("mousemove", this._onDragMove, this)
                 .on("touchmove", this._onDragMove, this);
-            setTimeout(() => {
+            if (this.interval) clearTimeout(this.interval);
+            this.interval = setTimeout(() => {
                 if (!this._moved) {
-                    this.draggingType = 2;
-                    this.node.alpha = 0.5;
-                    this.view.isNeedUpdate = true;
+                    this.moveCmd && this.moveCmd.execute();
                 }
-            }, 50);
-            this.data = event.data;
-            this.dragging = true;
+                this.dragging = true;
+
+            }, 80);
             this._startPos = this.view.getPagePoint(event.data.originalEvent);
-            this.draggingType = 1;
             this._moved = false;
         }
 
-        return true
+        return false;
     }
 
     _onDragEnd(event) {
         if (this.dragging) {
-            event.stopPropagation();
             this.node
                 .off("mousemove", this._onDragMove)
                 .off("touchmove", this._onDragMove);
-            this.node.alpha = 1;
             if (!this._moved) {
-                this.showEditor();
-            } else if (this.draggingType == 2) {
+                this.moveCmd.cancel();
+                this.click();
+            }
+            else {
                 this.moveCmd.complete();
             }
-
-            this.data = null;
-            this._moved = false;
             this.dragging = false;
+        } else {
+            if (this.interval) {
+                clearTimeout(this.interval);
+                this.interval = null;
+            }
         }
         return true
     }
 
     _onDragMove(event) {
         if (this.dragging) {
-            if (this.draggingType == 1) {
-                this._moved = true;
-                var curPt = this.view.getPagePoint(event.data.originalEvent);
-
-                this.view.pan(curPt.x - this._startPos.x, curPt.y - this._startPos.y);
-                this._startPos = curPt;
-                return true;
-            }
             event.stopPropagation();
-            if (!this._moved) {
-                this._moved = true;
-                this.moveCmd && this.moveCmd.execute();
-            } else
-                this.moveTo(this.view.getPagePoint(event.data.originalEvent));
+            this._moveTo(this.view.getPagePoint(event.data.originalEvent));
+            this._moved = true;
+        } else {
+            if (this.interval) clearTimeout(this.interval);
+            this.interval = null;
         }
-        return true
-    }
-    static register(typeName, type) {
-        registeredTypes.set(typeName, type);
+        return true;
     }
 
-    static create(app, entity) {
-        if (registeredTypes.has(entity.type)) {
-            return new (registeredTypes.get(entity.type))(app, entity);
+    click() {
+        if (!this._moved) {
+            this.showEditor();
         }
-        return null;
+    }
+
+    _onOver() {
+        this.scale = this.scale || this.node.scale.x;
+        this.node.scale.x = this.node.scale.y = this.scale * 1.1;
+        this.view.isNeedUpdate = true;
+    }
+
+    _onLeave() {
+        this.node.scale.x = this.node.scale.y = this.scale;
+        this.view.isNeedUpdate = true;
     }
 }

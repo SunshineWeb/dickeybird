@@ -1,36 +1,62 @@
+var MouseEvents = require("./MouseEvents.js").MouseEvents;
 export class Canvas {
     constructor(app, viewElement) {
         this.app = app;
-        this.isNeedUpdate = true;
-        this.renderer = new PIXI.autoDetectRenderer(1280, 2000, { backgroundColor: 0x7ac9bb, view: viewElement });
+        this.renderer = new PIXI.autoDetectRenderer(1280, 2000, { transparent: true, view: viewElement });
         this.stage = new PIXI.Container();
         this.htmlContainer = document.getElementById("html-render");
-        this.bg = new PIXI.Graphics();//
-        this.bg.beginFill(0, 0);
-        this.bg.drawRect(0, 0, 10000, 10000);
-        this.bg.endFill();
         this._drawBg();
-        this.bg.position.x = -5000;
-        this.bg.position.y = -5000;
-        this.stage.addChild(this.bg);
+        this._scalePow = 0;
+        this._bg = document.getElementById("bg");
+        this.isNeedUpdate = true;
+        this.mouseEvents = new MouseEvents(this);
     }
 
     _drawBg() {
-        this.bg.lineStyle(1, 0xd9e9a9, 0.5);
-        for (var i = 0; i < 100; i++) {
-            this.bg.moveTo(0, i * 100);
-            this.bg.lineTo(10000, i * 100);
-            this.bg.moveTo(i * 100, 0);
-            this.bg.lineTo(i * 100, 10000);
-        }
+        this.bg = new PIXI.Graphics();//
+        this.bg.beginFill(0, 0);
+        this.bg.drawRect(-5000, -5000, 10000, 10000);
+        this.bg.endFill();
+        /*  this.bg.lineStyle(1, 0xd9e9a9, 0.5);
+          var g1 = new PIXI.Graphics();
+          var g2 = new PIXI.Graphics();
+          var g4 = new PIXI.Graphics();
+          g2.lineStyle(2, 0xd9e9a9, 0.5);
+          g1.lineStyle(1, 0xd9e9a9, 0.5);
+  
+          for (var i = -100; i <= 100; i++) {
+              if (i % 5 === 0) {
+                  //this.bg.lineStyle(2, 0xd9e9a9, 0.5);
+                  g2.moveTo(-5000, i * 50);
+                  g2.lineTo(5000, i * 50);
+                  g2.moveTo(i * 50, -5000);
+                  g2.lineTo(i * 50, 5000);
+              }
+              else {
+                  //this.bg.lineStyle(1, 0xd9e9a9, 0.5);
+                  g1.moveTo(-5000, i * 50);
+                  g1.lineTo(5000, i * 50);
+                  g1.moveTo(i * 50, -5000);
+                  g1.lineTo(i * 50, 5000);
+              }/*
+          }
+          this.bg.addChild(g1);
+          this.bg.addChild(g2);*/
+        this.stage.addChild(this.bg);
     }
 
     addDisplayObject(obj) {
         if (obj.entity && obj.entity.id) {
             this.app.viewModels.set(obj.entity.id, obj);
         }
-        this.stage.addChild(obj.node);
-        this.isNeedUpdate = true;
+        if (obj.node) {
+            this.stage.addChild(obj.node);
+            this.isNeedUpdate = true;
+        }
+
+        if (obj.htmlNode) {
+            this.htmlContainer.appendChild(obj.htmlNode);
+        }
         return obj;
     }
 
@@ -38,7 +64,13 @@ export class Canvas {
         if (obj.entity && obj.entity.id) {
             this.app.viewModels.delete(obj.entity.id);
         }
-        this.stage.removeChild(obj.node);
+        if (obj.node)
+            this.stage.removeChild(obj.node);
+
+        if (obj.htmlNode) {
+            this.htmlContainer.removeChild(obj.htmlNode);
+        }
+
         this.isNeedUpdate = true;
     }
 
@@ -48,35 +80,62 @@ export class Canvas {
 
     show() {
         var _this = this;
+        var translate = document.getElementById("bg-translate");
         function animate() {
 
             if (_this.isNeedUpdate) {
                 _this.isNeedUpdate = false;
+
+                if (_this._transform) {
+                    _this._transform = false;
+                    _this.htmlContainer.style.left = _this.stage.position.x + "px";
+                    _this.htmlContainer.style.top = _this.stage.position.y + "px";
+                    _this.htmlContainer.style.transform = "scale(" + _this.stage.scale.x + ")";
+                    _this.htmlContainer.style.webkitTransform = _this.htmlContainer.style.transform;
+                    _this.renderer.view.parentElement.dataset.pos = "(" + _this.stage.scale.x + ", " + Math.floor(_this.stage.position.x) + ", " + Math.floor(_this.stage.position.y) + ")";
+                    //translate.style.backgroundPositionX = _this.htmlContainer.style.left;
+                    //translate.style.backgroundPositionY = _this.htmlContainer.style.top;
+                    translate.setAttribute("transform", _this.htmlContainer.style.transform);
+                    _this._bg.setAttribute("transform", "translate(" + _this.stage.position.x + "," + _this.stage.position.y + ")");
+                }
                 _this.renderer.render(_this.stage);
             }
 
             _this.stats && _this.stats.update();
             requestAnimationFrame(animate);
+            //setTimeout(animate, 1);
         }
-        this.resize();
+        this.resize(true);
         this.bindEvent();
         animate();
     }
-
-    resize() {
+    destory() {
+        this.stage.destory();
+        this.renderer.destroy();
+    }
+    resize(force) {
         var panel = this.renderer.view.parentElement.parentElement;
-        this.renderer.resize(panel.clientWidth, panel.clientHeight);
+        if (force || this.isMobile)
+            this.renderer.resize(panel.clientWidth, panel.clientHeight);
         this.isNeedUpdate = true;
+        this._transform = true;
     }
 
     getVisiblePoint(x, y) {
-
-        return { x: Math.floor((x || 0) - this.stage.position.x), y: Math.floor((y || 0) - this.stage.position.y) }
+        return this.stage.toLocal({ x: Math.ceil((x || 0)), y: Math.ceil((y || 0)) });
     }
 
     getVisibleCenterPoint() {
-        var dx = this.renderer.width / this.stage.scale.x / 2, dy = this.renderer.height / this.stage.scale.y / 2;
+        var dx = this.renderer.width / 2, dy = this.renderer.height / 2;
         return this.getVisiblePoint(dx, dy);
+    }
+
+    toCanvasPoint(pt) {
+        return { x: pt.x * this.renderer.resolution, y: pt.y * this.renderer.resolution };
+    }
+
+    toScreenPoint(pt) {
+        return { x: pt.x / this.renderer.resolution, y: pt.y / this.renderer.resolution };
     }
 
     getPagePoint(eventData) {
@@ -85,23 +144,34 @@ export class Canvas {
             cur = eventData.changedTouches[0];
         }
 
-        return { x: cur.pageX, y: cur.pageY };
+        return { x: cur.pageX / this.renderer.resolution, y: cur.pageY / this.renderer.resolution };
+    }
+
+    setCursor(cursor) {
+        this.renderer.view.style.cursor = cursor;
+    }
+
+    resetCursor() {
+        this.renderer.view.style.cursor = "default";
     }
 
     _onDragStart(params) {
+        params.data.originalEvent.stopPropagation();
         params.stopPropagation();
+        console.log(params);
         this.moved = false;
         if (!params.data.originalEvent.touches || params.data.originalEvent.touches.length === 1) {
             this.moving = true;
+            this.renderer.view.style.cursor = "move";
         }
-        this.lastPt = this.getPagePoint(params.data.originalEvent);
+        this.lastPt = params.data.global.clone()
         return true
     }
 
     _onDragEnd(params) {
         params.stopPropagation();
         if (this.moving && this.moved) {
-            var newPos = this.getPagePoint(params.data.originalEvent);
+            var newPos = params.data.global.clone()
             this._move(newPos, true);
         }
 
@@ -109,36 +179,47 @@ export class Canvas {
             this.editor.hide();
             this.imageEditor.hide();
         }
-
+        this.renderer.view.style.cursor = "default";
         this.moving = false;
         return true
     }
 
     zoomout() {
-        this.zoom(0.1);
+        this.zoom(Math.pow(Math.sqrt(2), ++this._scalePow));
     }
 
     zoomin() {
-        this.zoom(-0.1);
+        this.zoom(Math.pow(Math.sqrt(2), --this._scalePow));
     }
 
-    zoom(delta) {
-        var newScale = this.stage.scale.x + delta;
-        this.stage.scale.x = this.stage.scale.y = (newScale < 0.1 ? 0.1 : newScale);
-        this.htmlContainer.style.transform = "scale(" + this.stage.scale.x + ")";
-        this.isNeedUpdate = true;
+    zoom(newScale) {
+        var m = new PIXI.Matrix();
+        m.scale(newScale / this.stage.scale.x, newScale / this.stage.scale.x);
+        var pt = {
+            x: this.stage.position.x - this.renderer.width / 2,
+            y: this.stage.position.y - this.renderer.height / 2
+        }
+        var npt = m.apply(pt);
+
+        this.stage.scale.x = this.stage.scale.y = newScale;
+        this.pan((npt.x - pt.x), (npt.y - pt.y));
     }
 
     pan(dx, dy) {
-        this.stage.position.x += (dx || 0);
-        this.stage.position.y += (dy || 0);
-        this.stage.position.x = this.stage.position.x > 5000 ? 5000 : this.stage.position.x < -5000 ? -5000 : this.stage.position.x;
-        this.stage.position.y = this.stage.position.y > 5000 ? 5000 : this.stage.position.y < -5000 ? -5000 : this.stage.position.y;
-
-        this.htmlContainer.style.left = this.stage.position.x + "px";
-        this.htmlContainer.style.top = this.stage.position.y + "px";
-        this.renderer.view.parentElement.dataset.pos = "(" + this.stage.position.x + ", " + this.stage.position.y + ")";
+        this.stage.position.x += Math.ceil(dx || 0);
+        this.stage.position.y += Math.ceil(dy || 0);
+        //this.stage.position.x = this.stage.position.x > 5000 ? 5000 : this.stage.position.x < -5000 ? -5000 : this.stage.position.x;
+        //this.stage.position.y = this.stage.position.y > 5000 ? 5000 : this.stage.position.y < -5000 ? -5000 : this.stage.position.y;
         this.isNeedUpdate = true;
+        this._transform = true;
+    }
+
+    get scale() {
+        return this.stage.scale.x;
+    }
+
+    get isMobile() {
+        return this.renderer.plugins.accessibility.isMobileAccessabillity;
     }
 
     _move(newPos, force) {
@@ -148,9 +229,11 @@ export class Canvas {
     }
 
     _onDragMove(params) {
+        //
         params.stopPropagation();
         if (this.moving) {
-            var newPos = this.getPagePoint(params.data.originalEvent);
+            params.data.originalEvent.stopPropagation();
+            var newPos = params.data.global.clone()
             this._move(newPos);
             this.moved = true;
         }
@@ -158,14 +241,24 @@ export class Canvas {
     }
 
     bindEvent() {
-        this.bg.interactive = true;
-        this.bg.on("mousedown", this._onDragStart, this)
+        this.stage.interactive = true;
+       /* this.stage.on("mousedown", this._onDragStart, this)
             .on("touchstart", this._onDragStart, this)
             .on("mouseup", this._onDragEnd, this)
             .on("touchend", this._onDragEnd, this)
             .on("mousemove", this._onDragMove, this)
             .on("touchmove", this._onDragMove, this)
             .on('mouseupoutside', this._onDragEnd, this)
-            .on('touchendoutside', this._onDragEnd, this);
+            .on('touchendoutside', this._onDragEnd, this);*/
+
+        this.stage.on("mousedown", this.mouseEvents.onDragStart, this.mouseEvents)
+            .on("touchstart", this.mouseEvents.onDragStart, this.mouseEvents)
+            .on("mouseup", this.mouseEvents.onDragEnd, this.mouseEvents)
+            .on("touchend", this.mouseEvents.onDragEnd, this.mouseEvents)
+            .on("mousemove", this.mouseEvents.onDragMove, this.mouseEvents)
+            .on("touchmove", this.mouseEvents.onDragMove, this.mouseEvents)
+            .on('mouseupoutside', this.mouseEvents.onDragEnd, this.mouseEvents)
+            .on('touchendoutside', this.mouseEvents.onDragEnd, this.mouseEvents);
+
     }
 }

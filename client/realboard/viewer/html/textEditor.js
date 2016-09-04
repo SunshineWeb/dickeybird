@@ -17,13 +17,13 @@ input.onkeypress = function (e) {
     }
 }
 
-editor.onmousedown = function (event) {
+input.onmousedown = function (event) {
     event.stopPropagation();
 }
 
 export class TextEditor extends Moveable {
-    constructor(container) {
-        super(editor);
+    constructor(container, isMobile) {
+        super(editor, isMobile);
         container.appendChild(editor);
         this.makeChildUnDraggable(unDraggableElement);
     }
@@ -41,8 +41,8 @@ export class TextEditor extends Moveable {
         return new Promise((resolve, reject) => {
             this._resolve = resolve;
         }).then((v) => {
-            var updated = (entity.text != input.value);
-            entity.text = input.value;
+            var updated = (entity.text != v);
+            entity.text = v;
             return Promise.resolve({ updated: updated, value: entity });
         });
 
@@ -50,6 +50,7 @@ export class TextEditor extends Moveable {
 
     hide() {
         editor.style.display = "none";
-        this._resolve && this._resolve();
+        this._resolve && this._resolve(input.value);
+        return this;
     }
 }

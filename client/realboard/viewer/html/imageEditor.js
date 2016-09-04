@@ -7,7 +7,7 @@ editor.className = "text-editor";
 input.className = "image-src";
 input.placeholder = "src";
 input.type = "file";
-input.accept="image/gif, image/jpeg, image/png";
+input.accept = "image/gif, image/jpeg, image/png";
 head.innerText = "Image Editor";
 label.textContent = "src";
 editor.appendChild(head);
@@ -16,21 +16,18 @@ editor.appendChild(input);
 
 var Moveable = require("./Moveable.js").Moveable;
 export default class extends Moveable {
-    constructor(container) {
-        super(editor);
+    constructor(container, isMobile) {
+        super(editor, isMobile);
         container.appendChild(editor);
     }
 
     show(pos, size, entity) {
-        editor.style.top = pos.y + "px";
-        editor.style.left = pos.x + "px";
+        //editor.style.top = pos.y + "px";
+        //editor.style.left = pos.x + "px";
 
         //label.innerText = entity.src;
         //editor.style.display = "block";
-        input.style.width = size.width + "px";
-        editor.onmousedown = function (event) {
-            event.stopPropagation();
-        }
+        //input.style.width = size.width + "px";
         var isVideo = false;
         input.onchange = (e) => {
             var _this = this;
@@ -67,7 +64,8 @@ export default class extends Moveable {
     }
 
     hide() {
-        editor.style.display = "none";
-        this._resolve && this._resolve();
+        //editor.style.display = "none";
+        //this._resolve && this._resolve();
+        return this;
     }
 }

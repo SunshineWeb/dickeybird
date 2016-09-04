@@ -1,5 +1,5 @@
 var baseObjectDisplay = require("../displayObject.js").displayObject;
-var defaultTexture = PIXI.Texture.fromImage('res/image/noimage.png');
+var defaultTexture = PIXI.Texture.fromImage('res/image/daisy.png');
 export class ImageDisplay extends baseObjectDisplay {
     constructor(app, entity) {
         super(app, entity);
@@ -35,8 +35,12 @@ export class ImageDisplay extends baseObjectDisplay {
                 var loading = new this.view.loadingStatus(this.view.htmlContainer).show(this.entity.pos, { width: 100, height: 80 });
                 this.node.texture.baseTexture.isLoading = true;
                 this.node.texture.baseTexture.on("loaded", (e) => {
-                    this.node.width = 200;
-                    this.node.height = 200 * e.height / e.width;
+                    if (this.entity.width) {
+                        this.node.width = this.entity.width;
+                        this.node.height = this.node.width * e.height / e.width;
+                    } else {
+
+                    }
                     this.view.isNeedUpdate = true;
                     loading.hide();
                 });

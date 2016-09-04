@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<!-- saved from url=(0024)http://editor.method.ac/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<link rel="icon" type="image/png" href="http://editor.method.ac/images/logo.png">
+
+<!--{if svg_edit_release}-->
+  <link rel="stylesheet" href="./Draw_files/method-draw.compiled.css" type="text/css">
+<!--{else}>
+  <link rel="stylesheet" href="lib/jgraduate/css/jPicker.css" type="text/css"/>
+  <link rel="stylesheet" href="lib/jgraduate/css/jgraduate.css" type="text/css"/>
+  <link rel="stylesheet" href="css/method-draw.css" type="text/css"/>
+  <link rel="stylesheet" href="css/fonts.css" type="text/css"/>
+<!{endif}-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+
+  <script type="text/javascript" src="./Draw_files/jquery.js"></script>
+
+
+<!--{if svg_edit_release}-->
+  <script type="text/javascript" src="./Draw_files/method-draw.compiled.js"></script>
+<!--{else}>
+  <script type="text/javascript" src="lib/pathseg.js"></script>
+  <script type="text/javascript" src="lib/touch.js"></script>
+  <script type="text/javascript" src="lib/js-hotkeys/jquery.hotkeys.min.js"></script>
+  <script type="text/javascript" src="icons/jquery.svgicons.js"></script>
+  <script type="text/javascript" src="lib/jgraduate/jquery.jgraduate.js"></script>
+  <script type="text/javascript" src="lib/contextmenu/jquery.contextMenu.js"></script>
+  <script type="text/javascript" src="lib/jquery-ui/jquery-ui-1.8.17.custom.min.js"></script>
+  <script type="text/javascript" src="src/browser.js"></script>
+  <script type="text/javascript" src="src/svgtransformlist.js"></script>
+  <script type="text/javascript" src="src/math.js"></script>
+  <script type="text/javascript" src="src/units.js"></script>
+  <script type="text/javascript" src="src/svgutils.js"></script>
+  <script type="text/javascript" src="src/sanitize.js"></script>
+  <script type="text/javascript" src="src/history.js"></script>
+  <script type="text/javascript" src="src/select.js"></script>
+  <script type="text/javascript" src="src/draw.js"></script>
+  <script type="text/javascript" src="src/path.js"></script>
+  <script type="text/javascript" src="src/dialog.js"></script>
+  <script type="text/javascript" src="src/svgcanvas.js"></script>
+  <script type="text/javascript" src="src/method-draw.js"></script>
+  <script type="text/javascript" src="lib/jquery-draginput.js"></script>
+  <script type="text/javascript" src="lib/contextmenu.js"></script>
+  <script type="text/javascript" src="lib/jgraduate/jpicker.min.js"></script>
+  <script type="text/javascript" src="lib/mousewheel.js"></script>
+  <script type="text/javascript" src="extensions/ext-eyedropper.js"></script>
+  <script type="text/javascript" src="extensions/ext-shapes.js"></script>
+  <script type="text/javascript" src="extensions/ext-grid.js"></script>
+  <script type="text/javascript" src="lib/requestanimationframe.js"></script>
+  <script type="text/javascript" src="lib/taphold.js"></script>
+  <script type="text/javascript" src="lib/filesaver.js"></script>
+<!{endif}-->
+
+
+<title>Method Draw</title>
+</head>
+<body>
+<div id="svg_editor">
+
+<div id="rulers">
+  <div id="ruler_corner"></div>
+  <div id="ruler_x">
+    <div id="ruler_x_cursor"></div>
+    <div style="width: 9280px;">
+      <canvas height="15" width="9280"></canvas>
+    </div>
+  </div>
+  <div id="ruler_y">
+    <div id="ruler_y_cursor"></div>
+    <div style="height: 6400px;">
+      <canvas width="15" height="6400"></canvas>
+    </div>
+  </div>
+</div>
+
+<div id="workarea" class="select" style="overflow: scroll; line-height: 589px;">
+<div id="svgcanvas" style="position: relative; width: 4640.02px; height: 3200.02px;">
+
+<svg width="4640.022234914811" height="3200.0153344240075" id="svgroot" xlinkns="http://www.w3.org/1999/xlink"><svg id="canvasBackground" width="4640.022234914811" height="3200.0153344240075" x="0" y="0" overflow="none" style="pointer-events:none"><defs id="placeholder_defs"><pattern id="checkerPattern" patternUnits="userSpaceOnUse" x="0" y="0" width="20" height="20" viewBox="0 0 10 10"><rect x="0" y="0" width="10" height="10" fill="#fff"></rect><rect x="0" y="0" width="5" height="5" fill="#eee"></rect><rect x="5" y="5" width="5" height="5" fill="#eee"></rect></pattern><pattern id="gridpattern" patternUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><image x="0" y="0" width="100" height="100"></image></pattern></defs><rect width="100%" height="100%" x="0" y="0" stroke="#000" fill="url(#checkerPattern)" style="pointer-events:none"></rect></svg><svg id="svgcontent" width="4640.022234914811" height="3200.0153344240075" x="0" y="0" overflow="hidden" xmlns="http://www.w3.org/2000/svg" xmlns:se="http://svg-edit.googlecode.com" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 580 400"><!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ --><g style="pointer-events:none"><title style="pointer-events:inherit">background</title><rect x="-1" y="-1" width="582" height="402" id="canvas_background" fill="#fff" style="pointer-events:inherit"></rect><g id="canvasGrid" width="100%" height="100%" x="0" y="0" overflow="visible" display="none"><rect width="100%" height="100%" x="0" y="0" stroke-width="0" fill="url(#gridpattern)" style="pointer-events: none; display:visible;"></rect></g></g><g style="pointer-events:all"><title style="pointer-events:inherit">Layer 1</title><path fill="none" stroke="#000" stroke-width="1.5" id="svg_1" d="M146,89 C 146,90,148.31021118164062,91.71898651123047,151,95 153.28587341308594,97.78832244873047,156.6925506591797,101.18600463867188,158,103 159.65380859375,105.29454040527344,160.6173095703125,106.07611846923828,161,107 162.0823974609375,109.61312866210938,164.41885375976562,109.41886138916016,166,111 167.58114624023438,112.58113861083984,168.173095703125,113.85272979736328,169,115 170.3074493408203,116.81399536132812,172,119,173,120 174,121,175.173095703125,120.85272979736328,176,122 177.3074493408203,123.81399536132812,178.09788513183594,125.82443237304688,180,127 180.85064697265625,127.5257339477539,181.6934356689453,128.45880126953125,183,129 183.9238739013672,129.3826904296875,185.41885375976562,129.41885375976562,187,131 188.58114624023438,132.58114624023438,190,134,191,135 192,136,193,136,193,137 L 194,137"></path><path fill="none" stroke="#000" stroke-width="1.5" style="pointer-events:inherit" id="svg_2" d="M168,132 C 168,133,169.144287109375,137.93414306640625,170,140 172.42030334472656,145.84312438964844,173.5695037841797,150.13299560546875,175,154 176.5515899658203,158.19435119628906,178,160,178,161 L 179,162"></path><path fill="none" stroke="#000" stroke-width="1.5" style="pointer-events:inherit" id="svg_3" d="M234.5,50 C 235.5,50,238.4785614013672,52.0544548034668,243.5,54 251.4669189453125,57.08676528930664,260.6292724609375,60.543331146240234,275.5,65 284.5874938964844,67.72347259521484,297.80999755859375,70.33749389648438,300.5,72 301.7030029296875,72.74349975585938,301.79290771484375,73.29289245605469,302.5,74 303.20709228515625,74.70710754394531,305.3776550292969,76.06600189208984,306.5,78 308.3097229003906,81.11847686767578,310.5,87,311.5,90 312.5,93,313.2986145019531,97.0445327758789,314.5,102 316.21527099609375,109.07515716552734,317.5,114,317.5,119 317.5,122,317.5,129,317.5,132 317.5,137,317.5,142,317.5,146 317.5,150,317.5,151,317.5,152 L 317.5,153"></path><text fill="#000000" stroke-width="0" stroke-opacity="null" fill-opacity="null" x="58.5" y="210" id="svg_4" font-size="24" font-family="Helvetica, Arial, sans-serif" text-anchor="start" xml:space="preserve" transform="matrix(1,0,0,1.1454545259475708,0,-27.34545087814331) " stroke="#000">safds sdffsa asdfsd asdfdsf asdfdsf asdfds asdfds adsfdfdsf</text><ellipse fill="#003f7f" stroke="#000" stroke-width="1.5" style="pointer-events:inherit" cx="92" cy="106.5" id="svg_5" rx="19.5" ry="37.5"></ellipse><path fill="#003f7f" stroke="#000" stroke-width="1.5" d="M288.24860483640475,170.99917809404315 C304.4985267308536,174.12416307374485 278.3736523005473,176.62415105750623 278.24866635111795,176.49915421768046 C278.3736523005473,176.62415105750623 265.74871298255243,169.74918410216247 265.6237268499227,169.62418716257417 C265.74871298255243,169.74918410216247 270.8736883492632,160.1242303646812 270.748702291002,159.99923328542536 C270.8736883492632,160.1242303646812 279.49864689323994,159.749232167117 279.37366096013534,159.62423508241957 C279.49864689323994,159.749232167117 289.4985988282854,165.12420633220393 289.3736130402899,164.99920932550268 C289.4985988282854,165.12420633220393 271.99868294195585,167.87419311434144 288.24860483640475,170.99917809404315 z" id="svg_6"></path><rect fill="#003f7f" stroke-width="1.5" stroke-opacity="null" fill-opacity="null" x="240.62383221037817" y="173.24917215570815" width="22.499891481325076" height="17.499914694242438" id="svg_7" stroke="#000"></rect></g></svg><g id="selectorParentGroup" transform="translate(0,0)"><rect id="selectorRubberBand" fill="none" stroke="#666" stroke-dasharray="3,2" display="none" style="pointer-events:none" x="2154.9998893831303" y="1463.9999787559213" width="0" height="0"></rect><g id="selectorGroup0" transform="" display="none"><path id="selectedBox0" fill="none" stroke="#4F80FF" shape-rendering="crispEdges" style="pointer-events:none" d="M1917.9997964032925,1379.0000211418903 L2111.999861972451,1379.0000211418903 2111.999861972451,1533.0000171016459 1917.9997964032925,1533.0000171016459z"></path><g display="none"><circle id="selectorGrip_rotate_nw" fill="#000" r="8" stroke="#000" fill-opacity="0" stroke-opacity="0" stroke-width="0" style="cursor:url(images/rotate.png) 12 12, auto;" cx="1913.9997964032925" cy="1375.0000211418903"></circle><circle id="selectorGrip_rotate_ne" fill="#000" r="8" stroke="#000" fill-opacity="0" stroke-opacity="0" stroke-width="0" style="cursor:url(images/rotate.png) 12 12, auto;" cx="2115.999861972451" cy="1375.0000211418903"></circle><circle id="selectorGrip_rotate_se" fill="#000" r="8" stroke="#000" fill-opacity="0" stroke-opacity="0" stroke-width="0" style="cursor:url(images/rotate.png) 12 12, auto;" cx="2115.999861972451" cy="1537.0000171016459"></circle><circle id="selectorGrip_rotate_sw" fill="#000" r="8" stroke="#000" fill-opacity="0" stroke-opacity="0" stroke-width="0" style="cursor:url(images/rotate.png) 12 12, auto;" cx="1913.9997964032925" cy="1537.0000171016459"></circle><rect id="selectorGrip_resize_nw" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:nw-resize" pointer-events="all" x="1914" y="1375"></rect><rect id="selectorGrip_resize_n" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:n-resize" pointer-events="all" x="2011" y="1375"></rect><rect id="selectorGrip_resize_ne" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:ne-resize" pointer-events="all" x="2108" y="1375"></rect><rect id="selectorGrip_resize_e" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:e-resize" pointer-events="all" x="2108" y="1452"></rect><rect id="selectorGrip_resize_se" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:se-resize" pointer-events="all" x="2108" y="1529"></rect><rect id="selectorGrip_resize_s" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:s-resize" pointer-events="all" x="2011" y="1529"></rect><rect id="selectorGrip_resize_sw" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:sw-resize" pointer-events="all" x="1914" y="1529"></rect><rect id="selectorGrip_resize_w" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:w-resize" pointer-events="all" x="1914" y="1452"></rect></g></g><line id="text_cursor" stroke="#333" stroke-width="1" x1="683.765625" y1="188" x2="683.765625" y2="215.5" visibility="hidden" display="inline"></line><g id="pathpointgrip_container"><rect id="pathpointgrip_0" display="none" width="5" height="5" fill="#fff" stroke="#4F80FF" shape-rendering="crispEdges" stroke-width="1" cursor="move" style="pointer-events:all" xlink:title="Drag node to move it. Double-click node to change segment type" x="2024.4998912405363" y="1364.4999801634867"></rect><circle id="ctrlpointgrip_1c1" display="none" r="3" fill="#4F80FF" stroke="#4F80FF" stroke-opacity="0" stroke-width="3" cursor="move" style="pointer-events:all" xlink:title="Drag control point to adjust curve properties" cx="2435.9998871206253" cy="1392.9999798243252"></circle><circle id="ctrlpointgrip_0c2" display="none" r="3" fill="#4F80FF" stroke="#4F80FF" stroke-opacity="0" stroke-width="3" cursor="move" style="pointer-events:all" xlink:title="Drag control point to adjust curve properties" cx="2036.9998910954266" cy="1319.999980845503"></circle><line id="ctrlLine_1" stroke="#4F80FF" stroke-width="1" style="pointer-events:none" x1="2036.9998910954266" y1="1319.999980845503" x2="2036.9998910954266" y2="1319.999980845503" display="none"></line><line id="ctrlLine_2" stroke="#4F80FF" stroke-width="1" style="pointer-events:none" x1="2036.9998910954266" y1="1319.999980845503" x2="2036.9998910954266" y2="1319.999980845503" display="none"></line><rect id="pathpointgrip_1" display="none" width="5" height="5" fill="#fff" stroke="#4F80FF" shape-rendering="crispEdges" stroke-width="1" cursor="move" style="pointer-events:all" xlink:title="Drag node to move it. Double-click node to change segment type" x="2223.499997766517" y="1409.500000023613"></rect><rect id="pathpointgrip_2" display="none" width="5" height="5" fill="#fff" stroke="#4F80FF" shape-rendering="crispEdges" stroke-width="1" cursor="move" style="pointer-events:all" xlink:title="Drag node to move it. Double-click node to change segment type" x="2122.4999977665166" y="1354.5000000236132"></rect><rect id="pathpointgrip_3" display="none" width="5" height="5" fill="#fff" stroke="#4F80FF" shape-rendering="crispEdges" stroke-width="1" cursor="move" style="pointer-events:all" xlink:title="Drag node to move it. Double-click node to change segment type" x="2163.499997766517" y="1277.5000000236132"></rect><rect id="pathpointgrip_4" display="none" width="5" height="5" fill="#fff" stroke="#4F80FF" shape-rendering="crispEdges" stroke-width="1" cursor="move" style="pointer-events:all" xlink:title="Drag node to move it. Double-click node to change segment type" x="2232.499997766517" y="1274.5000000236132"></rect><rect id="pathpointgrip_5" display="none" width="5" height="5" fill="#fff" stroke="#4F80FF" shape-rendering="crispEdges" stroke-width="1" cursor="move" style="pointer-events:all" xlink:title="Drag node to move it. Double-click node to change segment type" x="2312.4999977665166" y="1317.5000000236132"></rect><line id="ctrlLine_1c1" stroke="#4F80FF" stroke-width="1" style="pointer-events:none" x1="2435.9998871206253" y1="1392.9999798243252" x2="2305.9998890070533" y2="1367.9999801870997" display="none"></line><line id="ctrlLine_1c2" stroke="#4F80FF" stroke-width="1" style="pointer-events:none" x1="2226.9998901534204" y1="1412.9999795341055" x2="2225.999997766517" y2="1412.000000023613" display="none"></line><circle id="ctrlpointgrip_1c2" display="none" r="3" fill="#4F80FF" stroke="#4F80FF" stroke-opacity="0" stroke-width="3" cursor="move" style="pointer-events:all" xlink:title="Drag control point to adjust curve properties" cx="2226.9998901534204" cy="1412.9999795341055"></circle><path id="segline_1" display="none" fill="none" stroke="#0ff" stroke-opacity="1" shape-rendering="crispEdges" stroke-width="2" style="pointer-events:none" d="M 2026.9998912405363 1366.9999801634867 C 2156.9998893541083 1391.999979800712 1947.9998923869039 1411.9999795104925 1947 1411"></path><line id="ctrlLine_2c1" stroke="#4F80FF" stroke-width="1" style="pointer-events:none" x1="2226.9998901534204" y1="1412.9999795341055" x2="2225.999997766517" y2="1412.000000023613" display="none"></line><circle id="ctrlpointgrip_2c1" display="none" r="3" fill="#4F80FF" stroke="#4F80FF" stroke-opacity="0" stroke-width="3" cursor="move" style="pointer-events:all" xlink:title="Drag control point to adjust curve properties" cx="2226.9998901534204" cy="1412.9999795341055"></circle><line id="ctrlLine_2c2" stroke="#4F80FF" stroke-width="1" style="pointer-events:none" x1="2125.99989161903" y1="1357.9999803322096" x2="2124.9999977665166" y2="1357.0000000236132" display="none"></line><circle id="ctrlpointgrip_2c2" display="none" r="3" fill="#4F80FF" stroke="#4F80FF" stroke-opacity="0" stroke-width="3" cursor="move" style="pointer-events:all" xlink:title="Drag control point to adjust curve properties" cx="2125.99989161903" cy="1357.9999803322096"></circle><path id="segline_2" display="none" fill="none" stroke="#0ff" stroke-opacity="1" shape-rendering="crispEdges" stroke-width="2" style="pointer-events:none" d="M 2225.999997766517 1412.000000023613 C 2226.9998901534204 1412.9999795341055 2125.99989161903 1357.9999803322096 2124.9999977665166 1357.0000000236132"></path><line id="ctrlLine_3c1" stroke="#4F80FF" stroke-width="1" style="pointer-events:none" x1="2125.99989161903" y1="1357.9999803322096" x2="2124.9999977665166" y2="1357.0000000236132" display="none"></line><circle id="ctrlpointgrip_3c1" display="none" r="3" fill="#4F80FF" stroke="#4F80FF" stroke-opacity="0" stroke-width="3" cursor="move" style="pointer-events:all" xlink:title="Drag control point to adjust curve properties" cx="2125.99989161903" cy="1357.9999803322096"></circle><line id="ctrlLine_3c2" stroke="#4F80FF" stroke-width="1" style="pointer-events:none" x1="2166.9998910240797" y1="1280.9999814495554" x2="2165.999997766517" y2="1280.0000000236132" display="none"></line><circle id="ctrlpointgrip_3c2" display="none" r="3" fill="#4F80FF" stroke="#4F80FF" stroke-opacity="0" stroke-width="3" cursor="move" style="pointer-events:all" xlink:title="Drag control point to adjust curve properties" cx="2166.9998910240797" cy="1280.9999814495554"></circle><path id="segline_3" display="none" fill="none" stroke="#0ff" stroke-opacity="1" shape-rendering="crispEdges" stroke-width="2" style="pointer-events:none" d="M 2124.9999977665166 1357.0000000236132 C 2125.99989161903 1357.9999803322096 2166.9998910240797 1280.9999814495554 2165.999997766517 1280.0000000236132"></path><line id="ctrlLine_4c1" stroke="#4F80FF" stroke-width="1" style="pointer-events:none" x1="2166.9998910240797" y1="1280.9999814495554" x2="2165.999997766517" y2="1280.0000000236132" display="none"></line><circle id="ctrlpointgrip_4c1" display="none" r="3" fill="#4F80FF" stroke="#4F80FF" stroke-opacity="0" stroke-width="3" cursor="move" style="pointer-events:all" xlink:title="Drag control point to adjust curve properties" cx="2166.9998910240797" cy="1280.9999814495554"></circle><line id="ctrlLine_4c2" stroke="#4F80FF" stroke-width="1" style="pointer-events:none" x1="2235.999890022822" y1="1277.9999814930882" x2="2234.999997766517" y2="1277.0000000236132" display="none"></line><circle id="ctrlpointgrip_4c2" display="none" r="3" fill="#4F80FF" stroke="#4F80FF" stroke-opacity="0" stroke-width="3" cursor="move" style="pointer-events:all" xlink:title="Drag control point to adjust curve properties" cx="2235.999890022822" cy="1277.9999814930882"></circle><path id="segline_4" display="none" fill="none" stroke="#0ff" stroke-opacity="1" shape-rendering="crispEdges" stroke-width="2" style="pointer-events:none" d="M 2165.999997766517 1280.0000000236132 C 2166.9998910240797 1280.9999814495554 2235.999890022822 1277.9999814930882 2234.999997766517 1277.0000000236132"></path><line id="ctrlLine_5c1" stroke="#4F80FF" stroke-width="1" style="pointer-events:none" x1="2235.999890022822" y1="1277.9999814930882" x2="2234.999997766517" y2="1277.0000000236132" display="none"></line><circle id="ctrlpointgrip_5c1" display="none" r="3" fill="#4F80FF" stroke="#4F80FF" stroke-opacity="0" stroke-width="3" cursor="move" style="pointer-events:all" xlink:title="Drag control point to adjust curve properties" cx="2235.999890022822" cy="1277.9999814930882"></circle><line id="ctrlLine_5c2" stroke="#4F80FF" stroke-width="1" style="pointer-events:none" x1="2315.9998888619434" y1="1320.999980869116" x2="2314.9999977665166" y2="1320.0000000236132" display="none"></line><circle id="ctrlpointgrip_5c2" display="none" r="3" fill="#4F80FF" stroke="#4F80FF" stroke-opacity="0" stroke-width="3" cursor="move" style="pointer-events:all" xlink:title="Drag control point to adjust curve properties" cx="2315.9998888619434" cy="1320.999980869116"></circle><path id="segline_5" display="none" fill="none" stroke="#0ff" stroke-opacity="1" shape-rendering="crispEdges" stroke-width="2" style="pointer-events:none" d="M 2234.999997766517 1277.0000000236132 C 2235.999890022822 1277.9999814930882 2315.9998888619434 1320.999980869116 2314.9999977665166 1320.0000000236132"></path><rect id="pathpointgrip_6" display="none" width="5" height="5" fill="#4F80FF" stroke="#4F80FF" shape-rendering="crispEdges" stroke-width="1" cursor="move" style="pointer-events:all" xlink:title="Drag node to move it. Double-click node to change segment type" x="2303.4998890070533" y="1365.4999801870997"></rect><line id="ctrlLine_6c1" stroke="#4F80FF" stroke-width="1" style="pointer-events:none" x1="2315.9998888619434" y1="1320.999980869116" x2="2314.9999977665166" y2="1320.0000000236132" display="none"></line><circle id="ctrlpointgrip_6c1" display="none" r="3" fill="#4F80FF" stroke="#4F80FF" stroke-opacity="0" stroke-width="3" cursor="move" style="pointer-events:all" xlink:title="Drag control point to adjust curve properties" cx="2315.9998888619434" cy="1320.999980869116"></circle><line id="ctrlLine_6c2" stroke="#4F80FF" stroke-width="1" style="pointer-events:none" x1="2175.9998908934813" y1="1342.9999805498744" x2="2305.9998890070533" y2="1367.9999801870997" display="none"></line><circle id="ctrlpointgrip_6c2" display="none" r="3" fill="#4F80FF" stroke="#4F80FF" stroke-opacity="0" stroke-width="3" cursor="move" style="pointer-events:all" xlink:title="Drag control point to adjust curve properties" cx="2175.9998908934813" cy="1342.9999805498744"></circle><path id="segline_6" display="none" fill="none" stroke="#0ff" stroke-opacity="1" shape-rendering="crispEdges" stroke-width="2" style="pointer-events:none" d="M 2314.9999977665166 1320.0000000236132 C 2315.9998888619434 1320.999980869116 2175.9998908934813 1342.9999805498744 2305.9998890070533 1367.9999801870997"></path></g></g></svg></div>
+</div>
+
+<div id="menu_bar">
+  <a class="menu">
+    <div class="menu_title" id="logo"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="15" height="15" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg viewBox="0 0 16 16" version="1.1">
+  <path id="svg_7" d="m-0.0965,16.1043l16.10001,-16.06917l-0.00001,16.06917l-16.1,0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="1.5" fill="#cccccc"></path>
+  <path id="svg_6" d="m0.0035,16.10449l0,-15.99999l16,15.99999l-16,0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="1.5" fill="#666666"></path>
+ </svg></svg></div>
+    <div class="menu_list">
+      <div id="tool_about" class="menu_item">About this Editor...</div>
+      <div class="separator"></div>
+      <div id="tool_about" class="menu_item">Keyboard Shortcuts...</div>
+    </div>
+  </a>
+  
+  <div class="menu">
+    <div class="menu_title" style="">File</div>
+    <div class="menu_list" id="file_menu"> 
+      <div id="tool_clear" class="menu_item">New Document</div>
+      <div id="tool_open" class="menu_item" style=""><input type="file"><div id="fileinputs"></div>Open SVG...</div>
+      <div id="tool_import" class="menu_item" style=""><input type="file"><div id="fileinputs_import"></div>Import Image...</div>
+      <div id="tool_save" class="menu_item">Save Image... <span class="shortcut">⌘S</span></div>
+      <div id="tool_export" class="menu_item">Export as PNG</div>
+    </div>
+  </div>
+
+  <div class="menu">
+    <div class="menu_title">Edit</div>
+    <div class="menu_list" id="edit_menu">
+      <div class="menu_item" id="tool_undo">Undo <span class="shortcut">⌘Z</span></div>
+      <div class="menu_item disabled" id="tool_redo">Redo <span class="shortcut">⌘Y</span></div>
+      <div class="separator"></div>
+      <div class="menu_item action_selected" id="tool_cut">Cut <span class="shortcut">⌘X</span></div>
+      <div class="menu_item action_selected" id="tool_copy">Copy <span class="shortcut">⌘C</span></div>
+      <div class="menu_item action_selected" id="tool_paste">Paste <span class="shortcut">⌘V</span></div>
+      <div class="menu_item action_selected" id="tool_clone">Duplicate <span class="shortcut">⌘D</span></div>
+      <div class="menu_item action_selected" id="tool_delete">Delete <span>⌫</span></div>
+    </div>
+  </div>
+  
+  <div class="menu">
+    <div class="menu_title">Object</div>
+    <div class="menu_list" id="object_menu">
+      <div class="menu_item action_selected" id="tool_move_top">Bring to Front <span class="shortcut">⌘⇧↑</span></div>
+      <div class="menu_item action_selected" id="tool_move_up">Bring Forward <span class="shortcut">⌘↑</span></div>
+      <div class="menu_item action_selected" id="tool_move_down">Send Backward <span class="shortcut">⌘↓</span></div>
+      <div class="menu_item action_selected" id="tool_move_bottom">Send to Back <span class="shortcut">⌘⇧↓</span></div>
+      <div class="separator"></div>
+      <div class="menu_item action_multi_selected disabled" id="tool_group">Group Elements <span class="shortcut">⌘G</span></div>
+      <div class="menu_item action_group_selected disabled" id="tool_ungroup">Ungroup Elements <span class="shortcut">⌘⇧G</span></div>
+      <div class="separator"></div>
+      <div class="menu_item action_path_convert_selected" id="tool_topath">Convert to Path</div>
+      <div class="menu_item action_path_selected disabled" id="tool_reorient">Reorient path</div>
+    </div>
+  </div>
+
+  <div class="menu open">
+    <div class="menu_title">View</div>
+    <div class="menu_list" id="view_menu">
+        <div class="menu_item push_button_pressed" id="tool_rulers">View Rulers</div>
+        <div class="menu_item" id="tool_wireframe">View Wireframe</div><div id="view_grid" title="View Grid" class="menu_item tool_button loaded">View Grid</div>
+        <div class="menu_item" id="tool_snap">Snap to Grid</div>
+        <div class="separator"></div>
+        <div class="menu_item" id="tool_source">Source... <span class="shortcut">⌘U</span></div>
+    </div>
+  </div>
+  
+
+  
+</div>
+
+<div id="tools_top" class="tools_panel">
+
+  <div id="canvas_panel" class="context_panel" style="display: block;">
+    
+    <h4 class="clearfix">Canvas</h4>
+    
+    <label data-title="Change canvas width" class="draginput">
+      <input size="3" id="canvas_width" type="text" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="28.571428571428573" data-domain="70" data-cursor="false">
+      <span class="icon_label">Width</span>
+    </label>
+    <label data-title="Change canvas height" class="draginput">
+      <input id="canvas_height" size="3" type="text" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="28.571428571428573" data-domain="70" data-cursor="false">
+      <span class="icon_label">Height</span>
+    </label>
+        
+    
+    <label data-title="Change canvas color" class="draginput">
+      <span>Color</span>
+      <div id="color_canvas_tools">
+        <div class="color_tool active" id="tool_canvas">
+          <div class="color_block">
+            <div id="canvas_bg"></div>
+            <div id="canvas_color"><svg xmlns="http://www.w3.org/2000/svg" width="60.5"><rect width="100%" height="100%" fill="#fff" opacity="1"></rect>          <defs><lineargradient id="gradbox_"></lineargradient></defs></svg></div>
+          </div>
+        </div>
+      </div>
+    </label>
+
+    <div class="draginput">
+      <span>Sizes</span>
+      <select id="resolution" autocomplete="off">
+        <option id="selectedPredefined" selected="selected">Custom</option>
+        <option>640x480</option>
+        <option>800x600</option>
+        <option>1024x768</option>
+        <option>1280x960</option>
+        <option>1600x1200</option>
+        <option id="fitToContent" value="content">Fit to Content</option>
+      </select>
+      <div class="caret"></div>
+      <label id="resolution_label">Custom</label>
+    </div>
+
+  </div>
+  
+  <div id="rect_panel" class="context_panel" style="display: none;">
+    <h4 class="clearfix">Rectangle</h4>
+    <label class="draginput">
+      <input id="rect_x" class="attr_changer" data-title="Change X coordinate" size="3" data-attr="x" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>X</span> 
+    </label>
+    <label class="draginput">
+      <input id="rect_y" class="attr_changer" data-title="Change Y coordinate" size="3" data-attr="y" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>Y</span> 
+    </label>
+    <label id="rect_width_tool attr_changer" data-title="Change rectangle width" class="draginput">
+      <input id="rect_width" class="attr_changer" size="3" data-attr="width" type="text" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span class="icon_label">Width</span>
+    </label>
+    <label id="rect_height_tool" data-title="Change rectangle height" class="draginput">
+      <input id="rect_height" class="attr_changer" size="3" data-attr="height" type="text" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span class="icon_label">Height</span>
+    </label>
+  </div>
+  
+  <div id="path_panel" class="context_panel clearfix" style="display: none;">
+    <h4 class="clearfix">Path</h4>
+    <label class="draginput">
+      <input id="path_x" class="attr_changer" data-title="Change ellipse&#39;s cx coordinate" size="3" data-attr="x" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>X</span>
+    </label>
+    <label class="draginput">
+      <input id="path_y" class="attr_changer" data-title="Change ellipse&#39;s cy coordinate" size="3" data-attr="y" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>Y</span>
+    </label>
+  </div>
+
+  <div id="image_panel" class="context_panel clearfix" style="display: none;">
+  <h4>Image</h4>
+    <label class="draginput">
+      <input id="image_x" class="attr_changer" data-title="Change X coordinate" size="3" data-attr="x" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>X</span> 
+    </label>
+    <label class="draginput">
+      <input id="image_y" class="attr_changer" data-title="Change Y coordinate" size="3" data-attr="y" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>Y</span> 
+    </label>
+    <label class="draginput">
+      <input id="image_width" class="attr_changer" data-title="Change image width" size="3" data-attr="width" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span class="icon_label">Width</span>
+    </label>
+    <label class="draginput">
+      <input id="image_height" class="attr_changer" data-title="Change image height" size="3" data-attr="height" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span class="icon_label">Height</span>
+    </label>
+  </div>
+  
+  <div id="circle_panel" class="context_panel" style="display: none;">
+    <h4>Circle</h4>
+    <label id="tool_circle_cx" class="draginput">
+      <span>Center X</span>
+      <input id="circle_cx" class="attr_changer" title="Change circle&#39;s cx coordinate" size="3" data-attr="cx" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+    </label>
+    <label id="tool_circle_cy" class="draginput">
+      <span>Center Y</span>
+      <input id="circle_cy" class="attr_changer" title="Change circle&#39;s cy coordinate" size="3" data-attr="cy" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+    </label>
+    <label id="tool_circle_r" class="draginput">
+      <span>Radius</span>
+      <input id="circle_r" class="attr_changer" title="Change circle&#39;s radius" size="3" data-attr="r" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+    </label>
+  </div>
+
+  <div id="ellipse_panel" class="context_panel clearfix" style="display: none;">
+    <h4>Ellipse</h4>
+    <label id="tool_ellipse_cx" class="draginput">
+      <input id="ellipse_cx" class="attr_changer" data-title="Change ellipse&#39;s cx coordinate" size="3" data-attr="cx" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>X</span>
+    </label>
+    <label id="tool_ellipse_cy" class="draginput">
+      <input id="ellipse_cy" class="attr_changer" data-title="Change ellipse&#39;s cy coordinate" size="3" data-attr="cy" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>Y</span>
+    </label>
+    <label id="tool_ellipse_rx" class="draginput">
+      <input id="ellipse_rx" class="attr_changer" data-title="Change ellipse&#39;s x radius" size="3" data-attr="rx" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>Radius X</span>
+    </label>
+    <label id="tool_ellipse_ry" class="draginput">
+      <input id="ellipse_ry" class="attr_changer" data-title="Change ellipse&#39;s y radius" size="3" data-attr="ry" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>Radius Y</span>
+    </label>
+  </div>
+
+  <div id="line_panel" class="context_panel clearfix" style="display: none;">
+    <h4>Line</h4>
+    <label id="tool_line_x1" class="draginput">
+      <input id="line_x1" class="attr_changer" data-title="Change line&#39;s starting x coordinate" size="3" data-attr="x1" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>Start X</span>
+    </label>
+    <label id="tool_line_y1" class="draginput">
+      <input id="line_y1" class="attr_changer" data-title="Change line&#39;s starting y coordinate" size="3" data-attr="y1" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>Start Y</span>
+    </label>
+    <label id="tool_line_x2" class="draginput">
+      <input id="line_x2" class="attr_changer" data-title="Change line&#39;s ending x coordinate" size="3" data-attr="x2" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>End X</span>
+    </label>
+    <label id="tool_line_y2" class="draginput">
+      <input id="line_y2" class="attr_changer" data-title="Change line&#39;s ending y coordinate" size="3" data-attr="y2" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>End Y</span>
+    </label>
+  </div>
+
+  <div id="text_panel" class="context_panel" style="display: none;">
+    <h4>Text</h4>
+    <label class="draginput">
+      <input id="text_x" class="attr_changer" data-title="Change text x coordinate" size="3" data-attr="x" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>X</span>
+    </label>
+    <label class="draginput">
+      <input id="text_y" class="attr_changer" data-title="Change text y coordinate" size="3" data-attr="y" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>Y</span>
+    </label>
+    
+    <div class="toolset draginput select twocol" id="tool_font_family">
+        <!-- Font family -->
+      <span>Font</span>
+      <div id="preview_font" style="font-family: Helvetica, Arial, sans-serif;">Helvetica</div>
+      <div class="caret"></div>
+      <input id="font_family" data-title="Change Font Family" size="12" type="hidden" autocomplete="off" value="Helvetica, Arial, sans-serif">
+      <select id="font_family_dropdown" autocomplete="off">
+          <option value="Arvo, sans-serif">Arvo</option>
+          <option value="&#39;Courier New&#39;, Courier, monospace">Courier</option>
+          <option value="Euphoria, sans-serif">Euphoria</option>
+          <option value="Georgia, Times, &#39;Times New Roman&#39;, serif">Georgia</option>
+          <option value="Helvetica, Arial, sans-serif" selected="selected">Helvetica</option>
+          <option value="Junction, sans-serif">Junction</option>
+          <option value="&#39;League Gothic&#39;, sans-serif">League Gothic</option>
+          <option value="Oswald, sans-serif">Oswald</option>
+          <option value="&#39;Palatino Linotype&#39;, &#39;Book Antiqua&#39;, Palatino, serif">Palatino</option>
+          <option value="&#39;Trebuchet MS&#39;, Gadget, sans-serif">Trebuchet</option>
+          <option value="&#39;Shadows Into Light&#39;, serif">Shadows Into Light</option>
+          <option value="&#39;Simonetta&#39;, serif">Simonetta</option>
+          <option value="&#39;Times New Roman&#39;, Times, serif">Times</option>
+      </select>
+      <div class="tool_button loaded" id="tool_bold" data-title="Bold Text [B]">B</div>
+      <div class="tool_button loaded" id="tool_italic" data-title="Italic Text [I]">i</div>
+    </div>
+
+    <label id="tool_font_size" data-title="Change Font Size" class="draginput">
+      <input id="font_size" size="3" value="0" autocomplete="off" readonly="readonly" data-scale="3.557142857142857" data-domain="70" data-cursor="true">
+      <span id="font_sizeLabel" class="icon_label">Font Size</span>
+    <div class="draginput_cursor" style="top: 70px;"></div></label>
+    <!-- Not visible, but still used -->
+    <input id="text" type="text" size="35" autocomplete="off">
+  </div>
+
+  <!-- formerly gsvg_panel -->
+  <div id="container_panel" class="context_panel clearfix" style="display: none;">
+  </div>
+  
+  <div id="use_panel" class="context_panel clearfix" style="display: none;">
+    <div class="tool_button clearfix loaded" id="tool_unlink_use" data-title="Break link to reference element (make unique)">Break link reference</div>
+  </div>
+  
+  <div id="g_panel" class="context_panel clearfix" style="display: none;">
+    <h4>Group</h4>
+    <label class="draginput">
+      <input id="g_x" class="attr_changer" data-title="Change groups&#39;s x coordinate" size="3" data-attr="x" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>X</span>
+    </label>
+    <label class="draginput">
+      <input id="g_y" class="attr_changer" data-title="Change groups&#39;s y coordinate" size="3" data-attr="y" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>Y</span>
+    </label>
+  </div>
+  
+  <div id="path_node_panel" class="context_panel clearfix" style="display: none;">
+    <h4>Edit Path</h4>
+
+    <label id="tool_node_x" class="draginput">
+      <input id="path_node_x" class="attr_changer" data-title="Change node&#39;s x coordinate" size="3" data-attr="x" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>X</span>
+    </label>
+    <label id="tool_node_y" class="draginput">
+      <input id="path_node_y" class="attr_changer" data-title="Change node&#39;s y coordinate" size="3" data-attr="y" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+      <span>Y</span>
+    </label>
+    
+    <div id="segment_type" class="draginput label">
+      <span>Segment Type</span>
+      <select id="seg_type" data-title="Change Segment type" autocomplete="off">
+        <option id="straight_segments" selected="selected" value="4">Straight</option>
+        <option id="curve_segments" value="6">Curve</option>
+      </select>
+      <div class="caret"></div>
+      <label id="seg_type_label">Curve</label>
+    </div>
+    
+    <!--
+    <label class="draginput checkbox" data-title="Link Control Points">
+      <span>Linked Control Points</span>
+      <div class="push_bottom"><input type="checkbox" id="tool_node_link" checked="checked" /></div>
+    </label>
+  -->
+    
+    <div class="clearfix"></div>
+    <div class="tool_button loaded" id="tool_node_clone" title="Adds a node">Add Node<svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-width="2" id="svg_102" d="m4.1953,19.42128c15.49391,-15.53349 -0.21065,0.1581 15.61084,-15.57944" stroke="#8dd35f" fill="none"></path>
+  <circle stroke-width="0.5" id="svg_121" stroke="#0000ff" fill="#00ffff" r="2.26172" cy="4" cx="19.75"></circle>
+  <circle id="svg_123" stroke-width="0.5" stroke="#0000ff" fill="#00ffff" r="2.26172" cy="19.40299" cx="4.0653"></circle>
+  <circle id="svg_7" stroke-width="0.5" stroke="#0000ff" fill="#00ffff" r="2.26172" cy="11.625" cx="11.9375"></circle>
+  <line stroke-linecap="round" id="svg_5" y2="14.46579" x2="9.66571" y1="4.02238" x1="9.7824" stroke-dasharray="null" stroke-width="2" stroke="#0000ff" fill="#0000ff"></line>
+  <line stroke-linecap="round" id="svg_4" y2="9.45264" x2="15.14996" y1="9.3943" x1="4.47318" stroke-dasharray="null" stroke-width="2" stroke="#0000ff" fill="#0000ff"></line>
+</svg></svg></div>
+    <div class="tool_button loaded" id="tool_node_delete" title="Delete Node">Delete Node<svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-width="2" id="svg_102" d="m4.1953,19.42128c15.49391,-15.53349 -0.21065,0.1581 15.61084,-15.57944" stroke="#8dd35f" fill="none"></path>
+  <circle stroke-width="0.5" id="svg_121" stroke="#0000ff" fill="#00ffff" r="2.26172" cy="4" cx="19.75"></circle>
+  <circle id="svg_123" stroke-width="0.5" stroke="#0000ff" fill="#00ffff" r="2.26172" cy="19.40299" cx="4.0653"></circle>
+  <circle id="svg_7" stroke-width="0.5" stroke="#0000ff" fill="#00ffff" r="2.26172" cy="11.625" cx="11.9375"></circle>
+  <g transform="rotate(-45.291072845458984 9.81157112121582,9.244086265563965) " id="svg_6">
+   <line stroke-linecap="round" id="svg_4" y2="9.45264" x2="15.14996" y1="9.3943" x1="4.47318" stroke-dasharray="null" stroke-width="2" stroke="#ff0000" fill="none"></line>
+   <line stroke-linecap="round" id="svg_5" y2="14.46579" x2="9.66571" y1="4.02238" x1="9.7824" stroke-dasharray="null" stroke-width="2" stroke="#ff0000" fill="none"></line>
+  </g>
+</svg></svg></div>
+    <div class="tool_button loaded" id="tool_openclose_path" title="Open/close sub-path">Open Path<svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300">
+ <g>
+  <path stroke="#000" stroke-width="15" fill="#ffc8c8" d="m123.5,38l-84,106l27,115l166,2l29,-111"></path>
+  <line x1="276.5" y1="153" x2="108.5" y2="24" stroke="#000" stroke-width="10" fill="none"></line>
+  <g stroke-width="15" stroke="#00f" fill="#0ff">
+   <circle r="30" cy="41" cx="123"></circle>
+   <circle r="30" cy="146" cx="40"></circle>
+   <circle r="30" cy="260" cx="69"></circle>
+   <circle r="30" cy="260" cx="228"></circle>
+   <circle r="30" cy="148" cx="260"></circle>
+  </g>
+  <g stroke="#A00" stroke-width="15" fill="none">
+   <line x1="168" y1="24" x2="210" y2="150"></line>
+   <line x1="210" y1="24" x2="168" y2="150"></line>
+  </g>
+ </g>
+</svg></svg></div>
+    <!--<div class="tool_button" id="tool_add_subpath" title="Add sub-path"></div>-->
+  </div>
+  
+  <!-- Buttons when a single element is selected -->
+  <div id="selected_panel" class="context_panel" style="display: none;">
+
+    <label id="tool_angle" data-title="Change rotation angle" class="draginput">
+      <input id="angle" class="attr_changer" size="2" value="0" data-attr="transform" data-min="-180" data-max="180" type="text" autocomplete="off" readonly="readonly" data-scale="5.142857142857143" data-domain="70" data-cursor="false">
+      <span class="icon_label">Rotation</span>
+      <div id="tool_angle_indicator">
+        <div id="tool_angle_indicator_cursor"></div>
+      </div>
+    </label>
+    
+      <label class="toolset draginput" id="tool_opacity" data-title="Change selected item opacity">
+        <input id="group_opacity" class="attr_changer" data-attr="opacity" data-multiplier="0.01" size="3" value="100" step="5" min="0" max="100" autocomplete="off" readonly="readonly" data-scale="1.4285714285714284" data-domain="70" data-cursor="true">
+        <span id="group_opacityLabel" class="icon_label">Opacity</span>
+      <div class="draginput_cursor" style="top: -1.42109e-14px;"></div></label>
+    
+    <div class="toolset" id="tool_blur" data-title="Change gaussian blur value">
+      <label class="draginput">
+        <input id="blur" size="2" value="0" step=".1" min="0" max="10" autocomplete="off" readonly="readonly" data-scale="0.14285714285714288" data-domain="70" data-cursor="true">
+        <span class="icon_label">Blur</span>
+      <div class="draginput_cursor" style="top: 70px;"></div></label>
+    </div>
+    
+    <label id="cornerRadiusLabel" data-title="Change Rectangle Corner Radius" class="draginput" style="display: block;">
+      <input id="rect_rx" size="3" value="0" data-attr="rx" class="attr_changer" type="text" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="1.4285714285714286" data-domain="70" data-cursor="true">
+      <span class="icon_label">Roundness</span>
+    <div class="draginput_cursor" style="top: 70px;"></div></label>
+    
+    <div class="clearfix"></div>
+    <div id="align_tools">
+      <h4>Align</h4>
+      <div class="toolset align_buttons" id="tool_position">
+          <label>
+            <div class="col last clear" id="position_opts">
+              <div class="draginput_cell" id="tool_posleft" title="Align Left"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 27 27" version="1.1" xml:space="preserve" x="0px" y="0px">
+		<path d="M 2 1 L 2 5 L 14 5 L 14 11 L 2 11 L 2 16 L 20 16 L 20 22 L 2 22 L 2 26 L 1 26 L 1 1 L 2 1 ZM 27 0 L 0 0 L 0 27 L 27 27 L 27 0 Z" fill="#3f3f3c"></path>
+	</svg></svg></div>
+              <div class="draginput_cell" id="tool_poscenter" title="Align Center"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 27 27" style="background-color:#ffffff00" version="1.1" xml:space="preserve" x="0px" y="0px">
+			<path d="M 13 1 L 14 1 L 14 6 L 22 6 L 22 12 L 14 12 L 14 15 L 19 15 L 19 21 L 14 21 L 14 26 L 13 26 L 13 21 L 8 21 L 8 15 L 13 15 L 13 12 L 5 12 L 5 6 L 13 6 L 13 1 ZM 0 0 L 0 27 L 27 27 L 27 0 L 0 0 Z" fill="#3f3f3c"></path>
+
+	</svg></svg></div>
+              <div class="draginput_cell" id="tool_posright" title="Align Right"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 27 27" style="background-color:#ffffff00" version="1.1" xml:space="preserve" x="0px" y="0px">
+		<path d="M 25 1 L 25 5 L 13 5 L 13 11 L 25 11 L 25 16 L 7 16 L 7 22 L 25 22 L 25 26 L 26 26 L 26 1 L 25 1 ZM 0 0 L 27 0 L 27 27 L 0 27 L 0 0 Z" fill="#3f3f3c"></path>
+	</svg></svg></div>
+              <div class="draginput_cell" id="tool_postop" title="Align Top"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Untitled-Page%201" viewBox="0 0 27 27" style="background-color:#ffffff00" version="1.1" xml:space="preserve" x="0px" y="0px">
+		<path d="M 1 2 L 5 2 L 5 14 L 11 14 L 11 2 L 16 2 L 16 20 L 22 20 L 22 2 L 26 2 L 26 1 L 1 1 L 1 2 ZM 0 27 L 0 0 L 27 0 L 27 27 L 0 27 Z" fill="#3f3f3c"></path>
+	</svg></svg></div>
+              <div class="draginput_cell" id="tool_posmiddle" title="Align Middle"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Untitled-Page%201" viewBox="0 0 27 27" style="background-color:#ffffff00" version="1.1" xml:space="preserve" x="0px" y="0px">
+	<path d="M 26 13 L 26 14 L 21 14 L 21 22 L 15 22 L 15 14 L 12 14 L 12 19 L 6 19 L 6 14 L 1 14 L 1 13 L 6 13 L 6 8 L 12 8 L 12 13 L 15 13 L 15 5 L 21 5 L 21 13 L 26 13 ZM 27 0 L 0 0 L 0 27 L 27 27 L 27 0 Z" fill="#3f3f3c"></path>
+</svg></svg></div>
+              <div class="draginput_cell" id="tool_posbottom" title="Align Bottom"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Untitled-Page%201" viewBox="0 0 27 27" style="background-color:#ffffff00" version="1.1" xml:space="preserve" x="0px" y="0px">
+	<path d="M 1 25 L 5 25 L 5 13 L 11 13 L 11 25 L 16 25 L 16 7 L 22 7 L 22 25 L 26 25 L 26 26 L 1 26 L 1 25 ZM 0 0 L 0 27 L 27 27 L 27 0 L 0 0 Z" fill="#3f3f3c"></path>
+</svg></svg></div>
+            </div>
+          </label>
+      </div>    
+    </div>
+  </div>
+  
+  <!-- Buttons when multiple elements are selected -->
+  <div id="multiselected_panel" class="context_panel clearfix" style="display: none;">
+    <h4 class="hidable">Multiple Elements</h4>
+    
+    <div class="toolset align_buttons" style="position: relative">
+      <label id="tool_align_relative" style="margin-top: 10px;"> 
+        <select id="align_relative_to" title="Align relative to ..." autocomplete="off">
+        <option id="selected_objects" value="selected">Align to objects</option>
+        <option id="page" value="page">Align to page</option>
+        </select>
+      </label>
+      <h4>.</h4>
+        <div class="col last clear">
+          <div class="draginput_cell" id="tool_alignleft" title="Align Left"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 27 27" version="1.1" xml:space="preserve" x="0px" y="0px">
+		<path d="M 2 1 L 2 5 L 14 5 L 14 11 L 2 11 L 2 16 L 20 16 L 20 22 L 2 22 L 2 26 L 1 26 L 1 1 L 2 1 ZM 27 0 L 0 0 L 0 27 L 27 27 L 27 0 Z" fill="#3f3f3c"></path>
+	</svg></svg></div>
+          <div class="draginput_cell" id="tool_aligncenter" title="Align Center"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 27 27" style="background-color:#ffffff00" version="1.1" xml:space="preserve" x="0px" y="0px">
+			<path d="M 13 1 L 14 1 L 14 6 L 22 6 L 22 12 L 14 12 L 14 15 L 19 15 L 19 21 L 14 21 L 14 26 L 13 26 L 13 21 L 8 21 L 8 15 L 13 15 L 13 12 L 5 12 L 5 6 L 13 6 L 13 1 ZM 0 0 L 0 27 L 27 27 L 27 0 L 0 0 Z" fill="#3f3f3c"></path>
+
+	</svg></svg></div>
+          <div class="draginput_cell" id="tool_alignright" title="Align Right"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 27 27" style="background-color:#ffffff00" version="1.1" xml:space="preserve" x="0px" y="0px">
+		<path d="M 25 1 L 25 5 L 13 5 L 13 11 L 25 11 L 25 16 L 7 16 L 7 22 L 25 22 L 25 26 L 26 26 L 26 1 L 25 1 ZM 0 0 L 27 0 L 27 27 L 0 27 L 0 0 Z" fill="#3f3f3c"></path>
+	</svg></svg></div>
+          <div class="draginput_cell" id="tool_aligntop" title="Align Top"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Untitled-Page%201" viewBox="0 0 27 27" style="background-color:#ffffff00" version="1.1" xml:space="preserve" x="0px" y="0px">
+		<path d="M 1 2 L 5 2 L 5 14 L 11 14 L 11 2 L 16 2 L 16 20 L 22 20 L 22 2 L 26 2 L 26 1 L 1 1 L 1 2 ZM 0 27 L 0 0 L 27 0 L 27 27 L 0 27 Z" fill="#3f3f3c"></path>
+	</svg></svg></div>
+          <div class="draginput_cell" id="tool_alignmiddle" title="Align Middle"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Untitled-Page%201" viewBox="0 0 27 27" style="background-color:#ffffff00" version="1.1" xml:space="preserve" x="0px" y="0px">
+	<path d="M 26 13 L 26 14 L 21 14 L 21 22 L 15 22 L 15 14 L 12 14 L 12 19 L 6 19 L 6 14 L 1 14 L 1 13 L 6 13 L 6 8 L 12 8 L 12 13 L 15 13 L 15 5 L 21 5 L 21 13 L 26 13 ZM 27 0 L 0 0 L 0 27 L 27 27 L 27 0 Z" fill="#3f3f3c"></path>
+</svg></svg></div>
+          <div class="draginput_cell" id="tool_alignbottom" title="Align Bottom"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Untitled-Page%201" viewBox="0 0 27 27" style="background-color:#ffffff00" version="1.1" xml:space="preserve" x="0px" y="0px">
+	<path d="M 1 25 L 5 25 L 5 13 L 11 13 L 11 25 L 16 25 L 16 7 L 22 7 L 22 25 L 26 25 L 26 26 L 1 26 L 1 25 ZM 0 0 L 0 27 L 27 27 L 27 0 L 0 0 Z" fill="#3f3f3c"></path>
+</svg></svg></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+  </div>
+  
+  <div id="stroke_panel" class="context_panel clearfix" style="display: none;">
+    <div class="clearfix"></div>
+    <h4>Stroke</h4>
+    <div class="toolset" data-title="Change stroke">
+      <label class="draginput">
+        <input id="stroke_width" size="2" value="5" data-attr="stroke-width" min="0" max="99" step="1" autocomplete="off" readonly="readonly" data-scale="1.4142857142857144" data-domain="70" data-cursor="true">
+        <span class="icon_label">Stroke Width</span>
+      <div class="draginput_cursor" style="top: 68.9394px;"></div></label>
+    </div>
+    <div class="stroke_tool draginput"> 
+      <span>Stroke Dash</span>
+      <select id="stroke_style" data-title="Change stroke dash style" autocomplete="off">
+        <option value="none" selected="selected">—</option>
+        <option value="2,2">···</option>
+        <option value="5,5">- -</option>
+        <option value="5,2,2,2">-·-</option>
+        <option value="5,2,2,2,2,2">-··-</option>
+      </select>
+      <div class="caret"></div>
+      <label id="stroke_style_label">—</label>
+    </div>
+    
+    <label style="display: none;">
+      <span class="icon_label">Stroke Join</span>
+    </label>
+    
+    <label style="display: none;">
+      <span class="icon_label">Stroke Cap</span>
+    </label>
+  </div>
+
+</div> <!-- tools_top -->
+  <div id="cur_context_panel">
+    
+  </div>
+
+
+<div id="tools_left" class="tools_panel">
+  <div class="loaded tool_button_current" id="tool_select" title="Select Tool  (V)"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg viewBox="0 0 24 24" version="1.1">
+	<g>
+	<path fill="#2F2F2C" d="M0,0v24h24V0H0z M17.147,20.757l-2.941,1.501l-3.677-6.005l-4.411,3.003V1.241l12.5,12.01l-4.412,1.501   L17.147,20.757z"></path>
+	</g>
+</svg></svg></div>
+  <div class="loaded tool_button" id="tool_fhpath" title="Pencil Tool  (Q)"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg viewBox="0 0 24 24" version="1.1">
+	<path fill="#2F2F2C" d="M-1.5-1.5v27h27v-27 M19.616,9.216L6.647,21.567l-5.531,1.285l-0.1-0.094l1.449-5.269L15.438,5.204   c0.231-0.062,0.788-0.219,1.579-0.062L3.255,18.243l-0.394,1.381l1.58,1.504l1.481-0.375l0.66-0.598l0.065-1.408l-1.053-1.004   L18.203,5.736c0.196,0.157,0.196,0.157,0.396,0.376C20.476,7.869,19.616,9.216,19.616,9.216z M22.87,4.9   c-0.002,0.774-0.358,1.561-1.013,2.185l-1.217,1.16c0,0,0.921-1.348-0.989-3.103c-1.679-1.599-3.259-0.91-3.259-0.91l1.284-1.223   c1.154-1.126,3.161-1.126,4.278-0.062c0.622,0.549,0.913,1.239,0.915,1.938V4.9z"></path>
+</svg></svg></div>
+  <div class="tool_button loaded" id="tool_line" title="Line Tool  (L)"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="eye-Page%201" viewBox="0 0 27 27" style="background-color:#ffffff00" version="1.1" xml:space="preserve" x="0px" y="0px">
+	<path d="M 3 1 L 26 24 L 24 26 L 1 3 L 3 1 ZM 0 0 L 0 27 L 27 27 L 27 0 L 0 0 Z" fill="#2f2f2c"></path>
+</svg></svg></div>
+  <div class="loaded tool_button" id="tool_rect" title="Square/Rect Tool  (R)"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="eye-Page%201" viewBox="0 0 27 27" style="background-color:#ffffff00" version="1.1" xml:space="preserve" x="0px" y="0px">
+	<path d="M 0 25 L 0 27 L 27 27 L 27 25 L 0 25 ZM 0 0 L 0 8 L 27 8 L 27 0 L 0 0 Z" fill="#2f2f2c"></path>
+</svg></svg></div>
+  <div class="loaded tool_button" id="tool_ellipse" title="Ellipse/Circle Tool  (C)"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="eye-Page%201" viewBox="0 0 27 27" style="background-color:#ffffff00" version="1.1" xml:space="preserve" x="0px" y="0px">
+	<path fill="#2F2F2C" d="M27,0H0v27h27 M13.25,7.617c6.742,0,12.207,3.846,12.207,8.59c0,4.745-5.465,8.591-12.207,8.591   S1.042,20.952,1.042,16.207C1.042,11.463,6.508,7.617,13.25,7.617z"></path>
+</svg></svg></div>
+  <div class="loaded tool_button" id="tool_path" title="Path Tool  (P)"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="eye-Page%201" viewBox="0 0 27 27" style="background-color:#ffffff00" version="1.1" xml:space="preserve" x="0px" y="0px">
+	<g id="Layer%201">
+		<path fill="#2F2F2C" d="M0,0v27h27V0H0z M12.193,1.904c0-0.365,0.871,0,0.871,0v12.105c-0.509,0.18-0.871,0.664-0.871,1.233c0,0.722,0.585,1.305,1.307,1.305c0.722,0,1.307-0.583,1.307-1.305c0-0.569-0.362-1.054-0.871-1.233V1.904c0,0,0.871-0.365,0.871,0c0,6.811,5.226,11.677,5.226,11.677l-3.256,8.193h-6.552l-3.256-8.193C6.968,13.581,12.193,8.714,12.193,1.904z M7.839,25.258v-2.612h11.322v2.612H7.839z"></path>
+	</g>
+</svg></svg></div>
+  <div id="tools_shapelib_show" title="Shape library" class="tool_button loaded" data-curopt="#tool_shapelib"><div class="flyout_arrow_horiz"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon" style="width: 5px; height: 5px;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 50">
+	  <path stroke="none" fill="#ccc" d="m0,0l0,50l25,-25l-25,-25z"></path>
+	</svg></svg></div><img class="svg_icon" src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjcgMjciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjI3IiBoZWlnaHQ9IjI3IiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgY2xhc3M9InN2Z19pY29uIj48c3ZnIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+CiAgICAgICAgPHBhdGggZmlsbD0iIzJGMkYyQyIgZD0iTTAsMHYyN2gyN1YwSDB6IE0yMC4zMjgsMjQuMTY2bC02Ljg5MS0zLjYyMmwtNi44OTEsMy42MjJsMS4zMTYtNy42NzJMMi4yODksMTEuMDZsNy43MDQtMS4xMjEgICAgICAgbDMuNDQ1LTYuOTc5bDMuNDQ3LDYuOThsNy43MDIsMS4xMjFsLTUuNTczLDUuNDM0TDIwLjMyOCwyNC4xNjZ6Ij48L3BhdGg+CiAgICA8L3N2Zz48L3N2Zz4="></div><div class="loaded tool_button" id="tool_text" title="Text Tool  (T)"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="eye-Page%201" viewBox="0 0 27 27" style="background-color:#ffffff00" version="1.1" xml:space="preserve" x="0px" y="0px">
+	<path fill="#2F2F2C" d="M0,0v27h27V0H0z M7.283,25.258v-1.741h0.539c1.133,0,1.879-0.204,2.224-0.64c0.345-0.422,0.525-1.157,0.525-2.191V4.355H8.733c-1.105,0-1.906,0.123-2.417,0.367C5.791,4.967,5.362,5.443,5.017,6.151C4.658,6.873,4.451,7.73,4.381,8.709H2.613V2.613h21.774v6.097H22.48c-0.359-1.701-0.87-2.858-1.52-3.457s-1.686-0.898-3.108-0.898h-1.976v16.331c0,1.062,0.165,1.81,0.525,2.218c0.358,0.409,1.104,0.613,2.236,0.613h0.595v1.741H7.283z"></path>
+</svg></svg></div>
+  <div class="loaded tool_button" id="tool_zoom" title="Zoom Tool  (Z)"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="27" height="27" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="eye-Page%201" viewBox="0 0 27 27" style="background-color:#ffffff00" version="1.1" xml:space="preserve" x="0px" y="0px">
+	<circle fill="#2F2F2C" cx="10.887" cy="10.887" r="6.532"></circle>
+	<path fill="#2F2F2C" d="M0,0v27h27V0H0z M15.373,18.856c-1.326,0.747-2.855,1.176-4.486,1.176c-5.051,0-9.145-4.095-9.145-9.145   c0-5.051,4.094-9.145,9.145-9.145c5.05,0,9.145,4.094,9.145,9.145c0,2.081-0.697,3.999-1.868,5.536l6.223,6.223l-2.612,2.612   L15.373,18.856z"></path>
+</svg></svg></div>
+  
+  <div id="tool_eyedropper" title="Eye Dropper Tool [I]" class="loaded tool_button"><img class="svg_icon" src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjcgMjciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjI3IiBoZWlnaHQ9IjI3IiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgY2xhc3M9InN2Z19pY29uIj48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIGlkPSJVbnRpdGxlZC1QYWdlJTIwMSIgdmlld0JveD0iMCAwIDI3IDI3IiBzdHlsZT0iYmFja2dyb3VuZC1jb2xvcjojZmZmZmZmMDAiIHZlcnNpb249IjEuMSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeD0iMHB4IiB5PSIwcHgiPgogICAgPHBhdGggZmlsbD0iIzJGMkYyQyIgZD0iTTE2Ljg2NywxMS43MjlsLTEuNS0xLjQ5bC05Ljg0NSw5Ljc3N2MtMC4xOTgsMC45MTktMC42NTMsMS44MzgtMS4xMDQsMi41ODUgICAgICAgYzAuNzUyLTAuNDQ4LDEuNjc4LTAuODk5LDIuNjA0LTEuMDk2TDE2Ljg2NywxMS43Mjl6Ij48L3BhdGg+CiAgICA8cGF0aCBmaWxsPSIjMkYyRjJDIiBkPSJNMCwwdjI3aDI3VjBIMHogTTIuNzAyLDI0LjgwMWwtMC41LTAuNDk2bC0wLjQ2LTAuNDU3bDAuNDIxLTAuNDkzYzAuMDE2LTAuMDIsMS43MTEtMi4wMzEsMi4wMDgtMy43OTkgICAgIGwwLjAzNy0wLjIyMkwxNC4zNjcsOS4yNDdsLTAuMzMzLTAuMzMxYy0wLjQ1OS0wLjQ1Ny0wLjQ1OS0xLjE5OCwwLTEuNjU1bDEuNS0xLjQ4OWMwLjQ2LTAuNDU3LDEuMjA2LTAuNDU3LDEuNjY3LDBMMTkuNywzLjI4OWMwLDAsMi41LTIuNDgyLDMuODMzLTEuMTU4TDI0LjIsMi43OTJsMC42NjcsMC42NjJjMC4yOCwwLjI3OCwwLjM5MSwwLjYwOSwwLjM5MSwwLjk1N2MwLDEuMzAyLTEuNTU4LDIuODQ5LTEuNTU4LDIuODQ5ICAgbC0yLjUsMi40ODJsMC4xNjcsMC4xNjZjMC40NiwwLjQ1NywwLjQ2LDEuMTk3LDAsMS42NTVsLTEuNSwxLjQ4OWMtMC40NiwwLjQ1Ni0xLjIwNywwLjQ1Ni0xLjY2NywwbC0wLjMzMy0wLjMzMkw3LjcwOCwyMi44MDlsLTAuMjIzLDAuMDM3Yy0xLjc4NywwLjI5Ni0zLjgwNSwxLjk3OC0zLjgyNiwxLjk5NWwtMC40OTYsMC40MTdMMi43MDIsMjQuODAxeiI+PC9wYXRoPgogIDwvc3ZnPjwvc3ZnPg=="></div><div id="color_tools">
+        <div id="tool_switch" title="Switch stroke and fill colors  (x)"></div>
+        <div class="color_tool active" id="tool_fill">
+          <label class="icon_label" title="Change fill color"></label>
+          <div class="color_block">
+            <div id="fill_bg"></div>
+            <div id="fill_color" class="color_block"><svg xmlns="http://www.w3.org/2000/svg" width="100%"><rect width="100%" height="100%" fill="#003f7f" opacity="1"></rect>          <defs><lineargradient id="gradbox_"></lineargradient></defs></svg></div>
+          </div>
+        </div>
+
+        <div class="color_tool" id="tool_stroke">
+            <label class="icon_label" title="Change stroke color"></label>
+          <div class="color_block">
+            <div id="stroke_bg"></div>
+            <div id="stroke_color" class="color_block" title="Change stroke color"><svg xmlns="http://www.w3.org/2000/svg" width="100%"><rect width="100%" height="100%" fill="#000" opacity="1"></rect>          <defs><lineargradient id="gradbox_"></lineargradient></defs></svg></div>
+          </div>
+        </div>
+  </div>
+</div> <!-- tools_left -->
+
+<div id="tools_bottom" class="tools_panel">
+
+    <!-- Zoom buttons -->
+  <div id="zoom_panel" class="toolset" title="Change zoom level">
+    <div class="draginput select" id="zoom_label">
+      <span id="zoomLabel" class="zoom_tool icon_label"><svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" width="16" height="16" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="eye-Page%201" viewBox="0 0 27 27" style="background-color:#ffffff00" version="1.1" xml:space="preserve" x="0px" y="0px">
+	<circle fill="#2F2F2C" cx="10.887" cy="10.887" r="6.532"></circle>
+	<path fill="#2F2F2C" d="M0,0v27h27V0H0z M15.373,18.856c-1.326,0.747-2.855,1.176-4.486,1.176c-5.051,0-9.145-4.095-9.145-9.145   c0-5.051,4.094-9.145,9.145-9.145c5.05,0,9.145,4.094,9.145,9.145c0,2.081-0.697,3.999-1.868,5.536l6.223,6.223l-2.612,2.612   L15.373,18.856z"></path>
+</svg></svg></span>
+      <select id="zoom_select" autocomplete="off">
+        <option value="6">6%</option>
+        <option value="12">12%</option>
+        <option value="16">16%</option>
+        <option value="25">25%</option>
+        <option value="50">50%</option>
+        <option value="75">75%</option>
+        <option value="100">100%</option>
+        <option value="150">150%</option>
+        <option value="200">200%</option>
+        <option value="300">300%</option>
+        <option value="400">400%</option>
+        <option value="600">600%</option>
+        <option value="800" selected="selected">800%</option>
+        <option value="1600">1600%</option>
+      </select>
+      <div class="caret"></div>
+      <input id="zoom" size="3" value="100%" type="text" readonly="readonly" autocomplete="off">
+    </div>
+  </div>
+
+  <div id="tools_bottom_3">
+    <div id="palette" title="Click to change fill color, shift-click to change stroke color"><div class="palette_item transparent" data-rgb="none"></div>                <div class="palette_item black" data-rgb="#000000"></div>                <div class="palette_item white" data-rgb="#ffffff"></div><div class="palette_item" style="background-color: #444444;" data-rgb="#444444"></div><div class="palette_item" style="background-color: #482816;" data-rgb="#482816"></div><div class="palette_item" style="background-color: #422C10;" data-rgb="#422C10"></div><div class="palette_item" style="background-color: #3B2F0E;" data-rgb="#3B2F0E"></div><div class="palette_item" style="background-color: #32320F;" data-rgb="#32320F"></div><div class="palette_item" style="background-color: #293414;" data-rgb="#293414"></div><div class="palette_item" style="background-color: #1F361B;" data-rgb="#1F361B"></div><div class="palette_item" style="background-color: #153723;" data-rgb="#153723"></div><div class="palette_item" style="background-color: #0C372C;" data-rgb="#0C372C"></div><div class="palette_item" style="background-color: #083734;" data-rgb="#083734"></div><div class="palette_item" style="background-color: #0E353B;" data-rgb="#0E353B"></div><div class="palette_item" style="background-color: #1A333F;" data-rgb="#1A333F"></div><div class="palette_item" style="background-color: #273141;" data-rgb="#273141"></div><div class="palette_item" style="background-color: #332D40;" data-rgb="#332D40"></div><div class="palette_item" style="background-color: #3E2A3C;" data-rgb="#3E2A3C"></div><div class="palette_item" style="background-color: #462735;" data-rgb="#462735"></div><div class="palette_item" style="background-color: #4B252D;" data-rgb="#4B252D"></div><div class="palette_item" style="background-color: #4D2425;" data-rgb="#4D2425"></div><div class="palette_item" style="background-color: #4C261D;" data-rgb="#4C261D"></div><div class="palette_item" style="background-color: #666666;" data-rgb="#666666"></div><div class="palette_item" style="background-color: #845335;" data-rgb="#845335"></div><div class="palette_item" style="background-color: #7B572D;" data-rgb="#7B572D"></div><div class="palette_item" style="background-color: #6F5C2A;" data-rgb="#6F5C2A"></div><div class="palette_item" style="background-color: #62612C;" data-rgb="#62612C"></div><div class="palette_item" style="background-color: #546433;" data-rgb="#546433"></div><div class="palette_item" style="background-color: #46673D;" data-rgb="#46673D"></div><div class="palette_item" style="background-color: #396849;" data-rgb="#396849"></div><div class="palette_item" style="background-color: #306856;" data-rgb="#306856"></div><div class="palette_item" style="background-color: #2D6862;" data-rgb="#2D6862"></div><div class="palette_item" style="background-color: #33666C;" data-rgb="#33666C"></div><div class="palette_item" style="background-color: #426373;" data-rgb="#426373"></div><div class="palette_item" style="background-color: #535F75;" data-rgb="#535F75"></div><div class="palette_item" style="background-color: #645A73;" data-rgb="#645A73"></div><div class="palette_item" style="background-color: #74556D;" data-rgb="#74556D"></div><div class="palette_item" style="background-color: #805064;" data-rgb="#805064"></div><div class="palette_item" style="background-color: #884D58;" data-rgb="#884D58"></div><div class="palette_item" style="background-color: #8B4D4B;" data-rgb="#8B4D4B"></div><div class="palette_item" style="background-color: #894F3F;" data-rgb="#894F3F"></div><div class="palette_item" style="background-color: #999999;" data-rgb="#999999"></div><div class="palette_item" style="background-color: #C48157;" data-rgb="#C48157"></div><div class="palette_item" style="background-color: #B8874D;" data-rgb="#B8874D"></div><div class="palette_item" style="background-color: #A98E49;" data-rgb="#A98E49"></div><div class="palette_item" style="background-color: #97944B;" data-rgb="#97944B"></div><div class="palette_item" style="background-color: #849854;" data-rgb="#849854"></div><div class="palette_item" style="background-color: #729C62;" data-rgb="#729C62"></div><div class="palette_item" style="background-color: #619E73;" data-rgb="#619E73"></div><div class="palette_item" style="background-color: #559E84;" data-rgb="#559E84"></div><div class="palette_item" style="background-color: #529D94;" data-rgb="#529D94"></div><div class="palette_item" style="background-color: #5B9BA2;" data-rgb="#5B9BA2"></div><div class="palette_item" style="background-color: #6D97AB;" data-rgb="#6D97AB"></div><div class="palette_item" style="background-color: #8391AE;" data-rgb="#8391AE"></div><div class="palette_item" style="background-color: #9A8AAB;" data-rgb="#9A8AAB"></div><div class="palette_item" style="background-color: #AF84A3;" data-rgb="#AF84A3"></div><div class="palette_item" style="background-color: #BF7E96;" data-rgb="#BF7E96"></div><div class="palette_item" style="background-color: #C97A86;" data-rgb="#C97A86"></div><div class="palette_item" style="background-color: #CE7975;" data-rgb="#CE7975"></div><div class="palette_item" style="background-color: #CC7C65;" data-rgb="#CC7C65"></div><div class="palette_item" style="background-color: #BBBBBB;" data-rgb="#BBBBBB"></div><div class="palette_item" style="background-color: #FFB27C;" data-rgb="#FFB27C"></div><div class="palette_item" style="background-color: #FABA6F;" data-rgb="#FABA6F"></div><div class="palette_item" style="background-color: #E6C36A;" data-rgb="#E6C36A"></div><div class="palette_item" style="background-color: #CFCA6D;" data-rgb="#CFCA6D"></div><div class="palette_item" style="background-color: #B8D078;" data-rgb="#B8D078"></div><div class="palette_item" style="background-color: #A0D58A;" data-rgb="#A0D58A"></div><div class="palette_item" style="background-color: #8CD79F;" data-rgb="#8CD79F"></div><div class="palette_item" style="background-color: #7DD8B5;" data-rgb="#7DD8B5"></div><div class="palette_item" style="background-color: #7AD6CA;" data-rgb="#7AD6CA"></div><div class="palette_item" style="background-color: #84D3DB;" data-rgb="#84D3DB"></div><div class="palette_item" style="background-color: #9ACEE6;" data-rgb="#9ACEE6"></div><div class="palette_item" style="background-color: #B6C7EA;" data-rgb="#B6C7EA"></div><div class="palette_item" style="background-color: #D3BEE7;" data-rgb="#D3BEE7"></div><div class="palette_item" style="background-color: #EDB6DC;" data-rgb="#EDB6DC"></div><div class="palette_item" style="background-color: #FFAFCC;" data-rgb="#FFAFCC"></div><div class="palette_item" style="background-color: #FFAAB8;" data-rgb="#FFAAB8"></div><div class="palette_item" style="background-color: #FFA9A2;" data-rgb="#FFA9A2"></div><div class="palette_item" style="background-color: #FFAC8D;" data-rgb="#FFAC8D"></div><div class="palette_item" style="background-color: #DDDDDD;" data-rgb="#DDDDDD"></div><div class="palette_item" style="background-color: #FFE7A2;" data-rgb="#FFE7A2"></div><div class="palette_item" style="background-color: #FFF093;" data-rgb="#FFF093"></div><div class="palette_item" style="background-color: #FFFA8D;" data-rgb="#FFFA8D"></div><div class="palette_item" style="background-color: #FFFF91;" data-rgb="#FFFF91"></div><div class="palette_item" style="background-color: #EEFF9F;" data-rgb="#EEFF9F"></div><div class="palette_item" style="background-color: #D1FFB4;" data-rgb="#D1FFB4"></div><div class="palette_item" style="background-color: #B9FFCE;" data-rgb="#B9FFCE"></div><div class="palette_item" style="background-color: #A8FFE9;" data-rgb="#A8FFE9"></div><div class="palette_item" style="background-color: #A4FFFF;" data-rgb="#A4FFFF"></div><div class="palette_item" style="background-color: #B1FFFF;" data-rgb="#B1FFFF"></div><div class="palette_item" style="background-color: #CBFFFF;" data-rgb="#CBFFFF"></div><div class="palette_item" style="background-color: #EDFFFF;" data-rgb="#EDFFFF"></div><div class="palette_item" style="background-color: #FFF5FF;" data-rgb="#FFF5FF"></div><div class="palette_item" style="background-color: #FFEBFF;" data-rgb="#FFEBFF"></div><div class="palette_item" style="background-color: #FFE2FF;" data-rgb="#FFE2FF"></div><div class="palette_item" style="background-color: #FFDCEC;" data-rgb="#FFDCEC"></div><div class="palette_item" style="background-color: #FFDBD2;" data-rgb="#FFDBD2"></div><div class="palette_item" style="background-color: #FFDFB8;" data-rgb="#FFDFB8"></div></div>
+  </div>
+</div>
+
+<!-- hidden divs -->
+<div id="color_picker" class="ui-draggable jGraduate_Picker" style="left: 50px; bottom: 50px; display: none;"><ul class="jGraduate_tabs"><li class="jGraduate_tab_color jGraduate_tab_current" data-type="col">Solid Color</li><li class="jGraduate_tab_lingrad" data-type="lg">Linear Gradient</li><li class="jGraduate_tab_radgrad" data-type="rg">Radial Gradient</li></ul><div class="jGraduate_colPick jPicker Container" style="display: block;"><table class="jPicker" cellpadding="0" cellspacing="0"><tbody><tr><td rowspan="9"><h2 class="Title">Pick a Fill Paint and Opacity</h2><div class="Map" style="background-color: rgb(0, 127, 255);"><span class="Map1" style="top: 0px; visibility: visible; background-image: url(&quot;lib/jgraduate/images/Maps.png&quot;);">&nbsp;</span><span class="Map2" style="top: 260px; visibility: visible; background-image: url(&quot;lib/jgraduate/images/Maps.png&quot;);">&nbsp;</span><span class="Map3" style="visibility: hidden; background-image: url(&quot;lib/jgraduate/images/map-opacity.png&quot;);">&nbsp;</span><img src="./Draw_files/mappoint.gif" class="Arrow" style="left: 249px; top: 123px;"></div></td><td rowspan="9"><div class="Bar" style="background-color: transparent;"><span class="Map1" style="top: 0px; visibility: visible; background-image: url(&quot;lib/jgraduate/images/Bars.png&quot;);">&nbsp;</span><span class="Map2" style="top: 260px; visibility: visible; background-image: url(&quot;lib/jgraduate/images/Bars.png&quot;);">&nbsp;</span><span class="Map3" style="top: 260px; visibility: visible; background-image: url(&quot;lib/jgraduate/images/Bars.png&quot;);">&nbsp;</span><span class="Map4" style="top: 260px; visibility: visible; background-image: url(&quot;lib/jgraduate/images/Bars.png&quot;);">&nbsp;</span><span class="Map5" style="visibility: hidden; background-image: url(&quot;lib/jgraduate/images/bar-opacity.png&quot;);">&nbsp;</span><span class="Map6" style="top: 260px; visibility: visible; background-image: url(&quot;lib/jgraduate/images/AlphaBar.png&quot;);">&nbsp;</span><img src="./Draw_files/rangearrows.gif" class="Arrow" style="left: 0px; top: 103px;"></div></td><td colspan="2" class="Preview"><div class="prev_div">new<div class="color_preview" style="background-image: url(&quot;lib/jgraduate/images/preview-opacity.png&quot;);"><span class="Active" title="New Color - Press “OK” To Commit" style="visibility: visible; background-color: rgb(0, 63, 127);">&nbsp;</span><span class="Current" title="Click To Revert To Original Color" style="visibility: visible; background-color: rgb(0, 63, 127);">&nbsp;</span></div></div>current</td><td rowspan="9" class="Button"><input type="button" class="Ok" value="OK" title="Commit To This Color Selection"><input type="button" class="Cancel" value="Cancel" title="Cancel And Revert To Original Color"><div class="Grid" style="background-image: url(&quot;lib/jgraduate/images/bar-opacity.png&quot;);"><span class="QuickColor" title="#ffaaaaff" style="background-color:#ffaaaa;">&nbsp;</span><span class="QuickColor" title="#ff5656ff" style="background-color:#ff5656;">&nbsp;</span><span class="QuickColor" title="#ff0000ff" style="background-color:#ff0000;">&nbsp;</span><span class="QuickColor" title="#bf0000ff" style="background-color:#bf0000;">&nbsp;</span><span class="QuickColor" title="#7f0000ff" style="background-color:#7f0000;">&nbsp;</span><span class="QuickColor" title="#ffffffff" style="background-color:#ffffff;">&nbsp;</span><span class="QuickColor" title="#ffd4aaff" style="background-color:#ffd4aa;">&nbsp;</span><span class="QuickColor" title="#ffaa56ff" style="background-color:#ffaa56;">&nbsp;</span><span class="QuickColor" title="#ff7f00ff" style="background-color:#ff7f00;">&nbsp;</span><span class="QuickColor" title="#bf5f00ff" style="background-color:#bf5f00;">&nbsp;</span><span class="QuickColor" title="#7f3f00ff" style="background-color:#7f3f00;">&nbsp;</span><span class="QuickColor" title="#e5e5e5ff" style="background-color:#e5e5e5;">&nbsp;</span><span class="QuickColor" title="#ffffaaff" style="background-color:#ffffaa;">&nbsp;</span><span class="QuickColor" title="#ffff56ff" style="background-color:#ffff56;">&nbsp;</span><span class="QuickColor" title="#ffff00ff" style="background-color:#ffff00;">&nbsp;</span><span class="QuickColor" title="#bfbf00ff" style="background-color:#bfbf00;">&nbsp;</span><span class="QuickColor" title="#7f7f00ff" style="background-color:#7f7f00;">&nbsp;</span><span class="QuickColor" title="#ccccccff" style="background-color:#cccccc;">&nbsp;</span><span class="QuickColor" title="#d4ffaaff" style="background-color:#d4ffaa;">&nbsp;</span><span class="QuickColor" title="#aaff56ff" style="background-color:#aaff56;">&nbsp;</span><span class="QuickColor" title="#7fff00ff" style="background-color:#7fff00;">&nbsp;</span><span class="QuickColor" title="#5fbf00ff" style="background-color:#5fbf00;">&nbsp;</span><span class="QuickColor" title="#3f7f00ff" style="background-color:#3f7f00;">&nbsp;</span><span class="QuickColor" title="#b2b2b2ff" style="background-color:#b2b2b2;">&nbsp;</span><span class="QuickColor" title="#aaffaaff" style="background-color:#aaffaa;">&nbsp;</span><span class="QuickColor" title="#56ff56ff" style="background-color:#56ff56;">&nbsp;</span><span class="QuickColor" title="#00ff00ff" style="background-color:#00ff00;">&nbsp;</span><span class="QuickColor" title="#00bf00ff" style="background-color:#00bf00;">&nbsp;</span><span class="QuickColor" title="#007f00ff" style="background-color:#007f00;">&nbsp;</span><span class="QuickColor" title="#999999ff" style="background-color:#999999;">&nbsp;</span><span class="QuickColor" title="#aaffd4ff" style="background-color:#aaffd4;">&nbsp;</span><span class="QuickColor" title="#56ffaaff" style="background-color:#56ffaa;">&nbsp;</span><span class="QuickColor" title="#00ff7fff" style="background-color:#00ff7f;">&nbsp;</span><span class="QuickColor" title="#00bf5fff" style="background-color:#00bf5f;">&nbsp;</span><span class="QuickColor" title="#007f3fff" style="background-color:#007f3f;">&nbsp;</span><span class="QuickColor" title="#7f7f7fff" style="background-color:#7f7f7f;">&nbsp;</span><span class="QuickColor" title="#aaffffff" style="background-color:#aaffff;">&nbsp;</span><span class="QuickColor" title="#56ffffff" style="background-color:#56ffff;">&nbsp;</span><span class="QuickColor" title="#00ffffff" style="background-color:#00ffff;">&nbsp;</span><span class="QuickColor" title="#00bfbfff" style="background-color:#00bfbf;">&nbsp;</span><span class="QuickColor" title="#007f7fff" style="background-color:#007f7f;">&nbsp;</span><span class="QuickColor" title="#666666ff" style="background-color:#666666;">&nbsp;</span><span class="QuickColor" title="#aad4ffff" style="background-color:#aad4ff;">&nbsp;</span><span class="QuickColor" title="#56aaffff" style="background-color:#56aaff;">&nbsp;</span><span class="QuickColor" title="#007fffff" style="background-color:#007fff;">&nbsp;</span><span class="QuickColor" title="#005fbfff" style="background-color:#005fbf;">&nbsp;</span><span class="QuickColor" title="#003f7fff" style="background-color:#003f7f;">&nbsp;</span><span class="QuickColor" title="#4c4c4cff" style="background-color:#4c4c4c;">&nbsp;</span><span class="QuickColor" title="#aaaaffff" style="background-color:#aaaaff;">&nbsp;</span><span class="QuickColor" title="#5656ffff" style="background-color:#5656ff;">&nbsp;</span><span class="QuickColor" title="#0000ffff" style="background-color:#0000ff;">&nbsp;</span><span class="QuickColor" title="#0000bfff" style="background-color:#0000bf;">&nbsp;</span><span class="QuickColor" title="#00007fff" style="background-color:#00007f;">&nbsp;</span><span class="QuickColor" title="#333333ff" style="background-color:#333333;">&nbsp;</span><span class="QuickColor" title="#d4aaffff" style="background-color:#d4aaff;">&nbsp;</span><span class="QuickColor" title="#aa56ffff" style="background-color:#aa56ff;">&nbsp;</span><span class="QuickColor" title="#7f00ffff" style="background-color:#7f00ff;">&nbsp;</span><span class="QuickColor" title="#5f00bfff" style="background-color:#5f00bf;">&nbsp;</span><span class="QuickColor" title="#3f007fff" style="background-color:#3f007f;">&nbsp;</span><span class="QuickColor" title="#191919ff" style="background-color:#191919;">&nbsp;</span><span class="QuickColor" title="#ffaaffff" style="background-color:#ffaaff;">&nbsp;</span><span class="QuickColor" title="#ff56ffff" style="background-color:#ff56ff;">&nbsp;</span><span class="QuickColor" title="#ff00ffff" style="background-color:#ff00ff;">&nbsp;</span><span class="QuickColor" title="#bf00bfff" style="background-color:#bf00bf;">&nbsp;</span><span class="QuickColor" title="#7f007fff" style="background-color:#7f007f;">&nbsp;</span><span class="QuickColor" title="#000000ff" style="background-color:#000000;">&nbsp;</span><span class="QuickColor" title="#ffaad4ff" style="background-color:#ffaad4;">&nbsp;</span><span class="QuickColor" title="#ff56aaff" style="background-color:#ff56aa;">&nbsp;</span><span class="QuickColor" title="#ff007fff" style="background-color:#ff007f;">&nbsp;</span><span class="QuickColor" title="#bf005fff" style="background-color:#bf005f;">&nbsp;</span><span class="QuickColor" title="#7f003fff" style="background-color:#7f003f;">&nbsp;</span><span class="QuickColor" style="background-color:;background-image:url(lib/jgraduate/images/NoColor.png)">&nbsp;</span></div></td></tr><tr class="Hue"><td class="Radio"><label title="Set To “Hue” Color Mode"><input type="radio" value="h" checked="checked">H:</label></td><td class="Text"><input type="text" maxlength="3" value="0" title="Enter A “Hue” Value (0-360°)">&nbsp;º</td></tr><tr class="Saturation"><td class="Radio"><label title="Set To “Saturation” Color Mode"><input type="radio" value="s">S:</label></td><td class="Text"><input type="text" maxlength="3" value="0" title="Enter A “Saturation” Value (0-100%)">&nbsp;%</td></tr><tr class="Value"><td class="Radio"><label title="Set To “Value” Color Mode"><input type="radio" value="v">V:</label></td><td class="Text"><input type="text" maxlength="3" value="0" title="Enter A “Value” Value (0-100%)">&nbsp;%<br><br></td></tr><tr class="Red"><td class="Radio"><label title="Set To “Red” Color Mode"><input type="radio" value="r">R:</label></td><td class="Text"><input type="text" maxlength="3" value="0" title="Enter A “Red” Value (0-255)"></td></tr><tr class="Green"><td class="Radio"><label title="Set To “Green” Color Mode"><input type="radio" value="g">G:</label></td><td class="Text"><input type="text" maxlength="3" value="0" title="Enter A “Green” Value (0-255)"></td></tr><tr class="Blue"><td class="Radio"><label title="Set To “Blue” Color Mode"><input type="radio" value="b">B:</label></td><td class="Text"><input type="text" maxlength="3" value="0" title="Enter A “Blue” Value (0-255)"></td></tr><tr class="Alpha"><td class="Radio"><label title="Set To “Alpha” Color Mode"><input type="radio" value="a">A:</label></td><td class="Text"><input type="text" maxlength="3" value="0" title="Enter A “Alpha” Value (0-100)">&nbsp;%</td></tr><tr class="Hex"><td colspan="2" class="Text"><label title="Enter A “Hex” Color Value (#000000-#ffffff)">#:<input type="text" maxlength="6" class="Hex" value="000000"></label><input type="text" maxlength="2" class="AHex" value="00" title="Enter A “Alpha” Value (#00-#ff)"></td></tr></tbody></table></div><div class="jGraduate_gradPick" style="display: none;"><div id="color_picker_jGraduate_Swatch" class="jGraduate_Swatch"><h2 class="jGraduate_Title">Pick a Fill Paint and Opacity</h2><div id="color_picker_jGraduate_GradContainer" class="jGraduate_GradContainer"><svg id="color_picker_jgraduate_svg" width="256" height="256" xmlns="http://www.w3.org/2000/svg"><radialgradient id="color_picker_rg_jgraduate_grad"></radialgradient><lineargradient id="color_picker_lg_jgraduate_grad" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#none" stop-opacity="1" offset="0"></stop><stop stop-color="#NaNNaNNaN" stop-opacity="1" offset="1"></stop></lineargradient><rect id="color_picker_jgraduate_rect" x="0" y="0" width="256" height="256" fill="url(#color_picker_jgraduate_grad)" fill-opacity="1"></rect></svg><div class="grad_coord jGraduate_lg_field" title="Begin Stop" style="top: 0px; left: 0px;">1</div><div class="grad_coord jGraduate_lg_field" title="End stop" style="top: 0px; left: 256px;">2</div><div class="grad_coord jGraduate_rg_field" title="Center stop" style="top: 128px; left: 128px;">C</div><div class="grad_coord jGraduate_rg_field" title="Focus point" style="top: 128px; left: 128px; display: none;" id="color_picker_jGraduate_focusCoord">F</div></div><div id="color_picker_jGraduate_StopSlider" class="jGraduate_StopSlider"><svg width="100%" height="45"><pattern width="16" height="16" patternUnits="userSpaceOnUse" id="jGraduate_trans"><image width="16" height="16" xlink:href="lib/jgraduate/images/map-opacity.png"></image></pattern><g><path d="M-6.2,0.9c3.6-4,6.7-4.3,6.7-12.4c-0.2,7.9,3.1,8.8,6.5,12.4c3.5,3.8,2.9,9.6,0,12.3c-3.1,2.8-10.4,2.7-13.2,0C-9.6,9.9-9.4,4.4-6.2,0.9z" fill="url(#jGraduate_trans)" transform="translate(10, 26)"></path><path d="M-6.2,0.9c3.6-4,6.7-4.3,6.7-12.4c-0.2,7.9,3.1,8.8,6.5,12.4c3.5,3.8,2.9,9.6,0,12.3c-3.1,2.8-10.4,2.7-13.2,0C-9.6,9.9-9.4,4.4-6.2,0.9z" fill="#none" fill-opacity="1" transform="translate(10, 26)" stroke="#000" stroke-width="1.5"></path><path d="M-6.2,0.9c3.6-4,6.7-4.3,6.7-12.4c-0.2,7.9,3.1,8.8,6.5,12.4c3.5,3.8,2.9,9.6,0,12.3c-3.1,2.8-10.4,2.7-13.2,0C-9.6,9.9-9.4,4.4-6.2,0.9z" fill="url(#jGraduate_trans)" transform="translate(266, 26)"></path><path d="M-6.2,0.9c3.6-4,6.7-4.3,6.7-12.4c-0.2,7.9,3.1,8.8,6.5,12.4c3.5,3.8,2.9,9.6,0,12.3c-3.1,2.8-10.4,2.7-13.2,0C-9.6,9.9-9.4,4.4-6.2,0.9z" fill="#NaNNaNNaN" fill-opacity="1" transform="translate(266, 26)" stroke="#000" stroke-width="1.5"></path></g><line x1="10" y1="15" x2="266" y2="15" stroke-width="2" stroke="#000"></line></svg></div></div><div class="jGraduate_Form jGraduate_Points jGraduate_lg_field"><div class="jGraduate_StopSection"><label class="jGraduate_Form_Heading">Begin Point</label><div class="jGraduate_Form_Section"><label>x:</label><input type="text" id="color_picker_jGraduate_x1" size="3" title="Enter starting x value between 0.0 and 1.0"><label> y:</label><input type="text" id="color_picker_jGraduate_y1" size="3" title="Enter starting y value between 0.0 and 1.0"></div></div><div class="jGraduate_StopSection"><label class="jGraduate_Form_Heading">End Point</label><div class="jGraduate_Form_Section"><label>x:</label><input type="text" id="color_picker_jGraduate_x2" size="3" title="Enter ending x value between 0.0 and 1.0"><label> y:</label><input type="text" id="color_picker_jGraduate_y2" size="3" title="Enter ending y value between 0.0 and 1.0"></div></div></div><div class="jGraduate_Form jGraduate_Points jGraduate_rg_field"><div class="jGraduate_StopSection"><label class="jGraduate_Form_Heading">Center Point</label><div class="jGraduate_Form_Section"><label>x:</label><input type="text" id="color_picker_jGraduate_cx" size="3" title="Enter x value between 0.0 and 1.0"><label> y:</label><input type="text" id="color_picker_jGraduate_cy" size="3" title="Enter y value between 0.0 and 1.0"></div></div><div class="jGraduate_StopSection"><label class="jGraduate_Form_Heading">Focal Point</label><div class="jGraduate_Form_Section"><label>Match center: <input type="checkbox" checked="checked" id="color_picker_jGraduate_match_ctr"></label><br><label>x:</label><input type="text" id="color_picker_jGraduate_fx" size="3" title="Enter x value between 0.0 and 1.0"><label> y:</label><input type="text" id="color_picker_jGraduate_fy" size="3" title="Enter y value between 0.0 and 1.0"></div></div></div><div class="jGraduate_StopSection jGraduate_SpreadMethod"><label class="jGraduate_Form_Heading">Spread method</label><div class="jGraduate_Form_Section"><select class="jGraduate_spreadMethod"><option value="pad" selected="">Pad</option><option value="reflect">Reflect</option><option value="repeat">Repeat</option></select></div></div><div class="jGraduate_Form"><div class="jGraduate_Slider jGraduate_RadiusField jGraduate_rg_field"><label class="prelabel">Radius:</label><div id="color_picker_jGraduate_Radius" class="jGraduate_SliderBar jGraduate_Radius" title="Click to set radius" style="width: 145px;"><img id="color_picker_jGraduate_RadiusArrows" class="jGraduate_RadiusArrows" src="./Draw_files/rangearrows2.gif" style="margin-left: 49.9447px;"></div><label><input type="text" id="color_picker_jGraduate_RadiusInput" size="3" value="100">%</label></div><div class="jGraduate_Slider jGraduate_EllipField jGraduate_rg_field"><label class="prelabel">Ellip:</label><div id="color_picker_jGraduate_Ellip" class="jGraduate_SliderBar jGraduate_Ellip" title="Click to set Ellip" style="width: 145px;"><img id="color_picker_jGraduate_EllipArrows" class="jGraduate_EllipArrows" src="./Draw_files/rangearrows2.gif" style="margin-left: 67.5px;"></div><label><input type="text" id="color_picker_jGraduate_EllipInput" size="3" value="0">%</label></div><div class="jGraduate_Slider jGraduate_AngleField jGraduate_rg_field"><label class="prelabel">Angle:</label><div id="color_picker_jGraduate_Angle" class="jGraduate_SliderBar jGraduate_Angle" title="Click to set Angle" style="width: 145px;"><img id="color_picker_jGraduate_AngleArrows" class="jGraduate_AngleArrows" src="./Draw_files/rangearrows2.gif" style="margin-left: 67.5px;"></div><label><input type="text" id="color_picker_jGraduate_AngleInput" size="3" value="0">º&nbsp;</label></div><div class="jGraduate_Slider jGraduate_OpacField"><label class="prelabel">Opac:</label><div id="color_picker_jGraduate_Opac" class="jGraduate_SliderBar jGraduate_Opac" title="Click to set Opac" style="width: 145px;"><img id="color_picker_jGraduate_OpacArrows" class="jGraduate_OpacArrows" src="./Draw_files/rangearrows2.gif" style="margin-left: 140px;"></div><label><input type="text" id="color_picker_jGraduate_OpacInput" size="3" value="100">%</label></div></div><div class="jGraduate_OkCancel"><input type="button" id="color_picker_jGraduate_Ok" class="jGraduate_Ok" value="OK"><input type="button" id="color_picker_jGraduate_Cancel" class="jGraduate_Cancel" value="Cancel"></div></div><div class="jGraduate_LightBox" style="display: none;"></div><div id="color_picker_jGraduate_stopPicker" class="jGraduate_stopPicker" style="display: none;"></div></div>
+
+<div class="tools_flyout" id="tools_shapelib" style="left: 34px; top: 335px; margin-top: -162px; margin-left: 3px;"><div id="shape_cats"><div data-cat="basic" class="current">Basic</div><div data-cat="object">Objects</div><div data-cat="symbol">Symbols</div><div data-cat="arrow">Arrows</div><div data-cat="flowchart">Flowchart</div><div data-cat="nature">Nature</div><div data-cat="game">Cards &amp; Chess</div><div data-cat="dialog_balloon">Dialog balloons</div><div data-cat="music">Music</div><div data-cat="weather">Weather &amp; Time</div><div data-cat="ui">User Interface</div><div data-cat="social">Social Web</div></div><div id="shape_buttons"><div class="tool_button loaded" id="shapelib_star_points_5" title="star_points_5"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m1,116.58409l113.82668,0l35.17332,-108.13487l35.17334,108.13487l113.82666,0l-92.08755,66.83026l35.17514,108.13487l-92.08759,-66.83208l-92.08757,66.83208l35.17515,-108.13487l-92.08758,-66.83026z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_donut" title="donut"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m1,150l0,0c0,-82.29042 66.70958,-149 149,-149l0,0c39.51724,0 77.41599,15.69816 105.35889,43.64108c27.94293,27.94293 43.64111,65.84165 43.64111,105.35892l0,0c0,82.29041 -66.70958,149 -149,149l0,0c-82.29041,0 -149,-66.70959 -149,-149zm74.5,0l0,0c0,41.1452 33.35481,74.5 74.5,74.5c41.14522,0 74.5,-33.3548 74.5,-74.5c0,-41.1452 -33.3548,-74.5 -74.5,-74.5l0,0c-41.14519,0 -74.5,33.35481 -74.5,74.5z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_triangle" title="triangle"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m1,280.375l149,-260.75l149,260.75z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_right_triangle" title="right_triangle"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m1,299l0,-298l298,298z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_diamond" title="diamond"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m1,150l149,-149l149,149l-149,149l-149,-149z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_pentagon" title="pentagon"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m1.00035,116.97758l148.99963,-108.4053l148.99998,108.4053l-56.91267,175.4042l-184.1741,0l-56.91284,-175.4042z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_hexagon" title="hexagon"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m1,149.99944l63.85715,-127.71428l170.28572,0l63.85713,127.71428l-63.85713,127.71428l-170.28572,0l-63.85715,-127.71428z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_septagon1" title="septagon1"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m0.99917,191.06511l29.51249,-127.7108l119.48833,-56.83673l119.48836,56.83673l29.51303,127.7108l-82.69087,102.41679l-132.62103,0l-82.69031,-102.41679z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_heptagon" title="heptagon"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m1,88.28171l87.28172,-87.28171l123.43653,0l87.28172,87.28171l0,123.43654l-87.28172,87.28172l-123.43653,0l-87.28172,-87.28172l0,-123.43654z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_decagon" title="decagon"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m1,150.00093l28.45646,-88.40318l74.49956,-54.63682l92.08794,0l74.50002,54.63682l28.45599,88.40318l-28.45599,88.40318l-74.50002,54.63681l-92.08794,0l-74.49956,-54.63681l-28.45646,-88.40318z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_dodecagon" title="dodecagon"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m1,110.07421l39.92579,-69.14842l69.14842,-39.92579l79.85159,0l69.14842,39.92579l39.92578,69.14842l0,79.85159l-39.92578,69.14842l-69.14842,39.92578l-79.85159,0l-69.14842,-39.92578l-39.92579,-69.14842l0,-79.85159z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_trapezoid" title="trapezoid"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m1,299l55.875,-298l186.25001,0l55.87498,298z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_dialog_balloon_1" title="dialog_balloon_1"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m0.99786,35.96579l0,0c0,-19.31077 15.28761,-34.96524 34.14583,-34.96524l15.52084,0l0,0l74.50001,0l139.68748,0c9.05606,0 17.74118,3.68382 24.14478,10.24108c6.40356,6.55726 10.00107,15.45081 10.00107,24.72416l0,87.41311l0,0l0,52.44785l0,0c0,19.31078 -15.2876,34.96524 -34.14584,34.96524l-139.68748,0l-97.32507,88.90848l22.82506,-88.90848l-15.52084,0c-18.85822,0 -34.14583,-15.65446 -34.14583,-34.96524l0,0l0,-52.44785l0,0z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_heart" title="heart"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m150,73c61,-175 300,0 0,225c-300,-225 -61,-400 0,-225z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_cylinder" title="cylinder"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m299.0007,83.77844c0,18.28676 -66.70958,33.11111 -149.00002,33.11111m149.00002,-33.11111l0,0c0,18.28676 -66.70958,33.11111 -149.00002,33.11111c-82.29041,0 -148.99997,-14.82432 -148.99997,-33.11111m0,0l0,0c0,-18.28674 66.70956,-33.1111 148.99997,-33.1111c82.29044,0 149.00002,14.82436 149.00002,33.1111l0,132.44449c0,18.28674 -66.70958,33.11105 -149.00002,33.11105c-82.29041,0 -148.99997,-14.82431 -148.99997,-33.11105z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_arrow_up" title="arrow_up"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m1.49805,149.64304l148.50121,-148.00241l148.50121,148.00241l-74.25061,0l0,148.71457l-148.5012,0l0,-148.71457z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_arrow_u_turn" title="arrow_u_turn"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m1.00059,299.00055l0,-167.62497l0,0c0,-72.00411 58.37087,-130.37499 130.375,-130.37499l0,0l0,0c34.57759,0 67.73898,13.7359 92.18906,38.18595c24.45006,24.45005 38.18593,57.61144 38.18593,92.18904l0,18.625l37.24997,0l-74.49995,74.50002l-74.50002,-74.50002l37.25,0l0,-18.625c0,-30.8589 -25.0161,-55.87498 -55.87498,-55.87498l0,0l0,0c-30.85892,0 -55.875,25.01608 -55.875,55.87498l0,167.62497z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_arrow_left_up" title="arrow_left_up"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m0.99865,224.5l74.50004,-74.5l0,37.25l111.74991,0l0,-111.75l-37.25,0l74.5,-74.5l74.5,74.5l-37.25,0l0,186.25l-186.24989,0l0,37.25l-74.50005,-74.5z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_plaque" title="plaque"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m-0.00197,49.94376l0,0c27.5829,0 49.94327,-22.36036 49.94327,-49.94327l199.76709,0l0,0c0,27.5829 22.36037,49.94327 49.94325,49.94327l0,199.7671l0,0c-27.58289,0 -49.94325,22.36034 -49.94325,49.94325l-199.76709,0c0,-27.58292 -22.36037,-49.94325 -49.94327,-49.94325z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_page" title="page"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m249.3298,298.99744l9.9335,-39.73413l39.73413,-9.93355l-49.66763,49.66768l-248.33237,0l0,-298.00001l298.00001,0l0,248.33234"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_cross" title="cross"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m0.99844,99.71339l98.71494,0l0,-98.71495l101.26279,0l0,98.71495l98.71495,0l0,101.2628l-98.71495,0l0,98.71494l-101.26279,0l0,-98.71494l-98.71494,0z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_divide" title="divide"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m150,0.99785l0,0c25.17819,0 45.58916,20.41097 45.58916,45.58916c0,25.17821 -20.41096,45.58916 -45.58916,45.58916c-25.17822,0 -45.58916,-20.41093 -45.58916,-45.58916c0,-25.1782 20.41093,-45.58916 45.58916,-45.58916zm0,296.25203c-25.17822,0 -45.58916,-20.41095 -45.58916,-45.58917c0,-25.17819 20.41093,-45.58916 45.58916,-45.58916c25.17819,0 45.58916,20.41096 45.58916,45.58916c0,25.17822 -20.41096,45.58917 -45.58916,45.58917zm-134.06754,-193.71518l268.13507,0l0,91.17833l-268.13507,0z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_minus" title="minus"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m0.99887,102.39503l297.49445,0l0,95.2112l-297.49445,0z"></path></svg></svg></div><div class="tool_button loaded" id="shapelib_times" title="times"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><svg viewBox="-15 -15 330 330"><path fill="#333" stroke="transparent" stroke-width="10" d="m1.00089,73.36786l72.36697,-72.36697l76.87431,76.87368l76.87431,-76.87368l72.36765,72.36697l-76.87433,76.87431l76.87433,76.87431l-72.36765,72.36765l-76.87431,-76.87433l-76.87431,76.87433l-72.36697,-72.36765l76.87368,-76.87431l-76.87368,-76.87431z"></path></svg></svg></div></div></div></div> <!-- svg_editor -->
+
+<div id="svg_source_editor">
+  <div id="svg_source_overlay"></div>
+  <div id="svg_source_container">
+    <div id="save_output_btns">
+      <p id="copy_save_note">Copy the contents of this box into a text editor, then save the file with a .svg extension.</p>
+      <button id="copy_save_done">Done</button>
+    </div>
+    <form>
+      <textarea id="svg_source_textarea" spellcheck="false"></textarea>
+    </form>
+    <div id="tool_source_back" class="toolbar_button">
+      <button id="tool_source_cancel" class="cancel">Cancel</button>
+      <button id="tool_source_save" class="ok">Apply Changes</button>
+    </div>
+  </div>
+</div>
+
+<div id="base_unit_container">
+  <select id="base_unit" autocomplete="off">
+    <option value="px">Pixels</option>
+    <option value="cm">Centimeters</option>
+    <option value="mm">Millimeters</option>
+    <option value="in">Inches</option>
+    <option value="pt">Points</option>
+    <option value="pc">Picas</option>
+    <option value="em">Ems</option>
+    <option value="ex">Exs</option>
+  </select>
+</div>
+
+<div id="dialog_box">
+  <div id="dialog_box_overlay"></div>
+  <div id="dialog_container" class="ui-draggable">
+    <div id="dialog_content"></div>
+    <div id="dialog_buttons"></div>
+  </div>
+</div>
+
+<ul id="cmenu_canvas" class="contextMenu" style="top: 201px; left: 753px; display: none;">
+  <li class=""><a href="http://editor.method.ac/#cut">Cut <span class="shortcut">⌘X;</span></a></li>
+  <li class=""><a href="http://editor.method.ac/#copy">Copy<span class="shortcut">⌘C</span></a></li>
+  <li class="disabled"><a href="http://editor.method.ac/#paste">Paste<span class="shortcut">⌘V</span></a></li>
+  <li class="separator"><a href="http://editor.method.ac/#delete">Delete<span class="shortcut">⌫</span></a></li>
+  <li class="separator disabled"><a href="http://editor.method.ac/#group">Group<span class="shortcut">⌘G</span></a></li>
+  <li class="disabled"><a href="http://editor.method.ac/#ungroup">Ungroup<span class="shortcut">⌘⇧G</span></a></li>
+  <li class="separator"><a href="http://editor.method.ac/#move_front">Bring to Front<span class="shortcut">⌘⇧↑</span></a></li>
+  <li class=""><a href="http://editor.method.ac/#move_up">Bring Forward<span class="shortcut">⌘↑</span></a></li>
+  <li class=""><a href="http://editor.method.ac/#move_down">Send Backward<span class="shortcut">⌘↓</span></a></li>
+  <li class=""><a href="http://editor.method.ac/#move_back">Send to Back<span class="shortcut">⌘⇧↓</span></a></li>
+</ul>
+
+
+
+
+<canvas style="display: none;"></canvas></body></html>
