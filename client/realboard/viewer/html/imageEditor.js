@@ -33,7 +33,7 @@ export default class extends Moveable {
             var _this = this;
             var url = input.value;
             var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
-            if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+            if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg"|| ext == "svg")) {
                 var reader = new FileReader();
 
                 reader.onload = function (e) {

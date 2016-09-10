@@ -1,4 +1,5 @@
 var baseObjectDisplay = require("../displayObject.js").displayObject;
+
 export class ShapeDisplay extends baseObjectDisplay {
     constructor(app, entity) {
         super(app, entity);
@@ -11,5 +12,12 @@ export class ShapeDisplay extends baseObjectDisplay {
         this.node.position.y = entity.pos.y;
     }
 
+    getBBox() {
+        return this.node.getLocalBounds();
+    }
+
+    showResize() {
+        baseObjectDisplay.showResize(this);
+    }
 }
 baseObjectDisplay.register("rect", ShapeDisplay);

@@ -15,7 +15,7 @@ export class Canvas {
     _drawBg() {
         this.bg = new PIXI.Graphics();//
         this.bg.beginFill(0, 0);
-        this.bg.drawRect(-5000, -5000, 10000, 10000);
+        this.bg.drawRect(-50000, -50000, 100000, 100000);
         this.bg.endFill();
         /*  this.bg.lineStyle(1, 0xd9e9a9, 0.5);
           var g1 = new PIXI.Graphics();
@@ -93,10 +93,8 @@ export class Canvas {
                     _this.htmlContainer.style.transform = "scale(" + _this.stage.scale.x + ")";
                     _this.htmlContainer.style.webkitTransform = _this.htmlContainer.style.transform;
                     _this.renderer.view.parentElement.dataset.pos = "(" + _this.stage.scale.x + ", " + Math.floor(_this.stage.position.x) + ", " + Math.floor(_this.stage.position.y) + ")";
-                    //translate.style.backgroundPositionX = _this.htmlContainer.style.left;
-                    //translate.style.backgroundPositionY = _this.htmlContainer.style.top;
                     translate.setAttribute("transform", _this.htmlContainer.style.transform);
-                    _this._bg.setAttribute("transform", "translate(" + _this.stage.position.x + "," + _this.stage.position.y + ")");
+                    _this._bg.setAttribute("transform", "translate(" + (_this.stage.position.x % (1250*_this.stage.scale.x)) + "," + (_this.stage.position.y % (1250*_this.stage.scale.x))+ ")");
                 }
                 _this.renderer.render(_this.stage);
             }
@@ -115,10 +113,15 @@ export class Canvas {
     }
     resize(force) {
         var panel = this.renderer.view.parentElement.parentElement;
-        if (force || this.isMobile)
+        if (force || !this.isMobile)
             this.renderer.resize(panel.clientWidth, panel.clientHeight);
         this.isNeedUpdate = true;
         this._transform = true;
+    }
+
+    click() {
+        this.editor.hide();
+        this.imageEditor.hide();
     }
 
     getVisiblePoint(x, y) {
@@ -153,35 +156,6 @@ export class Canvas {
 
     resetCursor() {
         this.renderer.view.style.cursor = "default";
-    }
-
-    _onDragStart(params) {
-        params.data.originalEvent.stopPropagation();
-        params.stopPropagation();
-        console.log(params);
-        this.moved = false;
-        if (!params.data.originalEvent.touches || params.data.originalEvent.touches.length === 1) {
-            this.moving = true;
-            this.renderer.view.style.cursor = "move";
-        }
-        this.lastPt = params.data.global.clone()
-        return true
-    }
-
-    _onDragEnd(params) {
-        params.stopPropagation();
-        if (this.moving && this.moved) {
-            var newPos = params.data.global.clone()
-            this._move(newPos, true);
-        }
-
-        if (this.moving && !this.moved) {
-            this.editor.hide();
-            this.imageEditor.hide();
-        }
-        this.renderer.view.style.cursor = "default";
-        this.moving = false;
-        return true
     }
 
     zoomout() {
@@ -228,29 +202,8 @@ export class Canvas {
         this.pan(delta.x, delta.y);
     }
 
-    _onDragMove(params) {
-        //
-        params.stopPropagation();
-        if (this.moving) {
-            params.data.originalEvent.stopPropagation();
-            var newPos = params.data.global.clone()
-            this._move(newPos);
-            this.moved = true;
-        }
-        return true
-    }
-
     bindEvent() {
         this.stage.interactive = true;
-       /* this.stage.on("mousedown", this._onDragStart, this)
-            .on("touchstart", this._onDragStart, this)
-            .on("mouseup", this._onDragEnd, this)
-            .on("touchend", this._onDragEnd, this)
-            .on("mousemove", this._onDragMove, this)
-            .on("touchmove", this._onDragMove, this)
-            .on('mouseupoutside', this._onDragEnd, this)
-            .on('touchendoutside', this._onDragEnd, this);*/
-
         this.stage.on("mousedown", this.mouseEvents.onDragStart, this.mouseEvents)
             .on("touchstart", this.mouseEvents.onDragStart, this.mouseEvents)
             .on("mouseup", this.mouseEvents.onDragEnd, this.mouseEvents)
@@ -259,6 +212,5 @@ export class Canvas {
             .on("touchmove", this.mouseEvents.onDragMove, this.mouseEvents)
             .on('mouseupoutside', this.mouseEvents.onDragEnd, this.mouseEvents)
             .on('touchendoutside', this.mouseEvents.onDragEnd, this.mouseEvents);
-
     }
 }

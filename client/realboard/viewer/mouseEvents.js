@@ -16,6 +16,8 @@ export class MouseEvents {
                         this._currentMoveTarget.moveCmd.execute(this._startPos);
                     }
                 }, 80);
+            } else {
+
             }
             this._startPos = event.data.global.clone();
             this._moved = false;
@@ -25,15 +27,16 @@ export class MouseEvents {
     }
 
     onDragEnd(event) {
-
         if (this.dragging) {
-
-            if (this._currentMoveTarget && !this._currentMoveTarget.moveCmd.isMoved) {
-                this._currentMoveTarget.moveCmd.cancel();
-                this._currentMoveTarget.click();
-            }
-            else {
-                this._currentMoveTarget && this._currentMoveTarget.moveCmd.complete();
+            if (!this._moved) {
+                this.view.click();
+                if (this._currentMoveTarget && !this._currentMoveTarget.moveCmd.isMoved) {
+                    this._currentMoveTarget.moveCmd.cancel();
+                    this._currentMoveTarget.click();
+                }
+                else {
+                    this._currentMoveTarget && this._currentMoveTarget.moveCmd.complete();
+                }
             }
             this.dragging = false;
         } else {

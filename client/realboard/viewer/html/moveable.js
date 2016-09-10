@@ -58,6 +58,7 @@ export class Moveable {
         return { x: cur.pageX, y: cur.pageY };
     }
     _drag_start(event) {
+        if (event.button !== 0) return;
         event.preventDefault();
         event.stopPropagation();
         this._last = this.getPagePoint(event);
@@ -68,6 +69,7 @@ export class Moveable {
         if (this._startMoveHandler) this._startMoveHandler();
     }
     _drag_over(event) {
+
         if (this._last) {
             var newlast = this.getPagePoint(event);
             var delta = {};

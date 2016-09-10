@@ -11,8 +11,8 @@ var request = {
     _ajax: function (url, method, data) {
         var http = this._getHTTPObject();
         http.open(method, url, true);
-        if (method === "POST")
-            http.setRequestHeader("Content-type", "application/json");
+        
+        http.setRequestHeader("Content-type", "application/json");
         var promise = new Promise(function (resolve, reject) {
             http.onreadystatechange = function () {//Call a function when the state changes.
                 if (http.readyState == 4) {//Ready State will be 4 when the document is loaded.

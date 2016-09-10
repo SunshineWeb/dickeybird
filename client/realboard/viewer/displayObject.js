@@ -11,18 +11,7 @@ export class displayObject extends baseDisplay {
         if (!this.isCreated) {
             this.isCreated = true;
             this.node.vm = this;
-            /*
-            this.node.on('mousedown', this._onDragStart, this)
-                .on('touchstart', this._onDragStart, this)
-                .on("mouseup", this._onDragEnd, this)
-                .on("touchend", this._onDragEnd, this)
-                .on('mouseupoutside', this._onDragEnd, this)
-                .on('touchendoutside', this._onDragEnd, this)
-                .on("mouseover", this._onOver, this)
-                .on("mouseout", this._onLeave, this);
-                */
-
-                this.node.on('mousedown', this.view.mouseEvents.onDragStart, this.view.mouseEvents)
+            this.node.on('mousedown', this.view.mouseEvents.onDragStart, this.view.mouseEvents)
                 .on('touchstart', this.view.mouseEvents.onDragStart, this.view.mouseEvents)
                 .on("mouseup", this.view.mouseEvents.onDragEnd, this.view.mouseEvents)
                 .on("touchend", this.view.mouseEvents.onDragEnd, this.view.mouseEvents)
@@ -45,12 +34,6 @@ export class displayObject extends baseDisplay {
         this._startPos = newPosition;
         this.moveCmd.move(delta);
         return;
-        /*if (this.draggingType == 2) {
-            this.moveCmd.move(delta);
-        }
-        else {
-            this.view.pan(delta.dx, delta.dy);
-        }*/
     }
 
     move(delta) {
@@ -83,75 +66,37 @@ export class displayObject extends baseDisplay {
         }
     }
 
-    _onDragStart(event) {
-        if (!event.data.originalEvent.touches || event.data.originalEvent.touches.length <= 1) {
-            this.node.scale.x = this.node.scale.y = this.scale;
-            this.node
-                .on("mousemove", this._onDragMove, this)
-                .on("touchmove", this._onDragMove, this);
-            if (this.interval) clearTimeout(this.interval);
-            this.interval = setTimeout(() => {
-                if (!this._moved) {
-                    this.moveCmd && this.moveCmd.execute();
-                }
-                this.dragging = true;
-
-            }, 80);
-            this._startPos = this.view.getPagePoint(event.data.originalEvent);
-            this._moved = false;
-        }
-
-        return false;
-    }
-
-    _onDragEnd(event) {
-        if (this.dragging) {
-            this.node
-                .off("mousemove", this._onDragMove)
-                .off("touchmove", this._onDragMove);
-            if (!this._moved) {
-                this.moveCmd.cancel();
-                this.click();
-            }
-            else {
-                this.moveCmd.complete();
-            }
-            this.dragging = false;
-        } else {
-            if (this.interval) {
-                clearTimeout(this.interval);
-                this.interval = null;
-            }
-        }
-        return true
-    }
-
-    _onDragMove(event) {
-        if (this.dragging) {
-            event.stopPropagation();
-            this._moveTo(this.view.getPagePoint(event.data.originalEvent));
-            this._moved = true;
-        } else {
-            if (this.interval) clearTimeout(this.interval);
-            this.interval = null;
-        }
-        return true;
-    }
-
     click() {
-        if (!this._moved) {
-            this.showEditor();
-        }
+        this.showEditor();
     }
 
     _onOver() {
-        this.scale = this.scale || this.node.scale.x;
-        this.node.scale.x = this.node.scale.y = this.scale * 1.1;
-        this.view.isNeedUpdate = true;
+        //this.setStatus("over");
+        this.showResize && this.showResize();
     }
 
     _onLeave() {
-        this.node.scale.x = this.node.scale.y = this.scale;
+        //this.setStatus("normal");
+    }
+
+    setStatus(status) {
+        this.scale = this.scale || this.node.scale.x;
+        switch (status) {
+            case "move":
+                this.node.scale.x = this.node.scale.y = this.scale;
+                this.node.alpha = 0.5;
+                this.view.renderer.view.style.cursor = "move";
+                break;
+            case "normal":
+                this.node.scale.x = this.node.scale.y = this.scale;
+                this.node.alpha = 1;
+                this.view.renderer.view.style.cursor = "default";
+                break;
+            case "over":
+                this.node.scale.x = this.node.scale.y = this.scale * 1.05;
+                this.node.alpha = 1;
+                break;
+        }
         this.view.isNeedUpdate = true;
     }
 }

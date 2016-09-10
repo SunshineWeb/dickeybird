@@ -14,45 +14,10 @@ require("./viewer/objects/imgObjectDisplay.js");
 require("./viewer/objects/pathObjectDisplay.js");
 require("./viewer/objects/textObjectDisplay.js");
 require("./viewer/objects/shapeObjectDisplay.js");
-var thumb = require("./viewer/html/leading.js").default;
+require("./viewer/html/VideoObjectDisplay.js");
+require("./viewer/objects/resize.js");
 
 var Stats = require("../lib/stats.min.js");
-
-function fullScreen() {
-    var el = document.documentElement,
-        rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen,
-        wscript;
-
-    if (typeof rfs != "undefined" && rfs) {
-        rfs.call(el);
-        return;
-    }
-
-    if (typeof window.ActiveXObject != "undefined") {
-        wscript = new ActiveXObject("WScript.Shell");
-        if (wscript) {
-            wscript.SendKeys("{F11}");
-        }
-    }
-}
-
-function exitFullScreen() {
-    var el = document,
-        cfs = el.cancelFullScreen || el.webkitCancelFullScreen || el.mozCancelFullScreen || el.exitFullScreen,
-        wscript;
-
-    if (typeof cfs != "undefined" && cfs) {
-        cfs.call(el);
-        return;
-    }
-
-    if (typeof window.ActiveXObject != "undefined") {
-        wscript = new ActiveXObject("WScript.Shell");
-        if (wscript != null) {
-            wscript.SendKeys("{F11}");
-        }
-    }
-}
 
 var onload = function () {
 
@@ -72,7 +37,6 @@ var onload = function () {
     app.viewer.stats.dom.style.right = "0";
     app.viewer.stats.dom.style.top = "";
     app.viewer.stats.dom.style.bottom = "0";
-    //new thumb(window.app, document.getElementById("thumb")).show();
 
     var toolbar = new menus.MenuToolBar(document.body);
     toolbar.addMenuItem("Text", function () {
@@ -117,6 +81,11 @@ var onload = function () {
         localStorage.setItem("design", "[]");
     });
 
+    toolbar.addMenuItem("video", function (event) {
+        var addNew = new commands.AddNew(window.app, { type: "video", src: "", width: 100, height: 80 });
+        addNew.execute();
+    });
+
 
     var source = new EventSource('/api/data/2?uid=' + window.app.connector.uid);
     source.addEventListener('message', function (e) {
@@ -139,7 +108,7 @@ var onload = function () {
     //setTimeout(scrollTo, 0, 0, 10);
 
     var design = localStorage.getItem("design");
-    if (design && false) {
+    if (design) {
         var entities = JSON.parse(design);
         entities.forEach((i) => {
             new commands.AddNew(window.app, i).execute(true);
@@ -168,8 +137,8 @@ var onload = function () {
         }
     }
 
-    app.viewer.pan(5000, 5000);
-    drawOne();
+    //app.viewer.pan(5000, 5000);
+    //drawOne();
 
 }
 
