@@ -10,8 +10,7 @@ module.exports = {
         filename: "[name].js"
     },
     module: {
-        loaders: [
-            {
+        loaders: [{
                 test: /\.(css|less)$/,
                 loader: 'style!css!less',
             },
@@ -35,13 +34,13 @@ module.exports = {
         root: path.resolve(__dirname, 'node_modules')
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({
+        /*new webpack.optimize.UglifyJsPlugin({
             minimize: true, mangle: {
                 props: {
                     regex: /^_|_$/,
                     ignore_quoted: true,
                 },
             }
-        })
+        })*/
     ]
 };
