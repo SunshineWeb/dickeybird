@@ -1,7 +1,7 @@
 {
     "name": "website",
     "scripts": {
-        "start": "http-server -p 8888 -c-1 ./",
+        "start": "http-server -p 8000 -c-1 ./",
         "compile": "webpack --watch --debug",
         "debug": "npm install & npm run compile & npm run start"
     },
@@ -16,8 +16,8 @@
         "less": "2.7.1",
         "less-loader": "2.2.1",
         "less-plugin-clean-css": "1.5.1",
-        "simplify-js":"*",
-        "babel-es6-polyfill":"*"
+        "simplify-js": "*",
+        "babel-es6-polyfill": "*"
     },
     "devDependencies": {
         "http-server": "^0.8.5",
